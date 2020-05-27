@@ -5,11 +5,8 @@ const guessFormat = () => {
 	return 'Work in progress...';
 };
 
-if (!moment.fn.guessFormat) {
-	// Moment's prototype is exposed by `moment.fn`
-	// We'll be adding our custom functions to `moment.fn`
-	// as suggested in https://momentjs.com/docs/#/parsing/
-	moment.fn.guessFormat = guessFormat;
-}
+// What if we attach directly on moment?
+// Like https://github.com/moment/moment-timezone/blob/063a95053afdfca0cbe8fb035271205d5f0ac417/moment-timezone.js#L601
+moment.guessFormat = guessFormat;
 
 export default moment;
