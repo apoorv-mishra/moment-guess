@@ -12,6 +12,6 @@ A utility package for guessing date's format
 3. In `quick-test.js`, add,
 ```javascript
 const moment = require('../dist/bundle.js');
-console.log(moment().guessFormat());
+console.log(moment.guessFormat());
 ```
 4. `node quick-test.js`
