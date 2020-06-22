@@ -11,7 +11,9 @@ A utility package for guessing date's format
 2. `cd quick-test && touch quick-test.js`
 3. In `quick-test.js`, add,
 ```javascript
-const moment = require('../dist/bundle.js');
-console.log(moment.guessFormat());
+const guessFormat = require('../dist/bundle.js');
+
+console.log(guessFormat('2020-06-23T00:20:49+05:30')); //YYYY-MM-DDTHH:mm:ssZ
+console.log(guessFormat('2020-10-10')); //YYYY-MM-DD
 ```
 4. `node quick-test.js`
