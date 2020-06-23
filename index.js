@@ -28,6 +28,21 @@ const iso8601Times = [
 ];
 const iso8601TzRegex = /Z|[+-]\d\d(?::?\d\d)?/;
 
+// RFC 2822 regex: For details see https://tools.ietf.org/html/rfc2822#section-3.3
+const rfc2822Regex = /^(?:(Mon|Tue|Wed|Thu|Fri|Sat|Sun)(,)?(\s))?(\d{1,2}\s(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s\d{2,4})\s(\d\d:\d\d(?::\d\d)?)\s(UT|GMT|[ECMP][SD]T|[Zz]|[+-]\d{4})$/;
+const rfc2822DayOfWeekRegex = /Mon|Tue|Wed|Thu|Fri|Sat|Sun/;
+const rfc2822Dates = [
+	['DD MMM YYYY', /\d{2} (?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{4}/],
+	['D MMM YYYY', /\d  (?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{4}/],
+	['DD MMM YY', /\d{2} (?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{2}/],
+	['D MMM YY', /\d (?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{2}/],
+];
+const rfc2822Times = [
+	['HH:mm:ss', /\d\d:\d\d:\d\d/],
+	['HH:mm', /\d\d:\d\d/],
+];
+const rfc2822TzRegex = /UT|GMT|[ECMP][SD]T|[Zz]|[+-]\d{4}/;
+
 export default function guessFormat(date) {
 	let format = '';
 
@@ -54,6 +69,41 @@ export default function guessFormat(date) {
 		if (match[4] && iso8601TzRegex.test(match[4])) {
 			format += 'Z';
 		}
+	// Test for RFC 2822
+	} else if (rfc2822Regex.test(date)) {
+		const match = rfc2822Regex.exec(preprocessRFC2822(date));
+
+		if (match[1] && rfc2822DayOfWeekRegex.test(match[1])) {
+			format += 'ddd' + (match[2] || '') + (match[3] || '');
+		}
+
+		for (let i = 0; i < rfc2822Dates.length; i++) {
+			if (rfc2822Dates[i][1].test(match[4])) {
+				format += (rfc2822Dates[i][0] + ' ');
+				break;
+			}
+		}
+
+		for (let i = 0; i < rfc2822Times.length; i++) {
+			if (rfc2822Times[i][1].test(match[5])) {
+				format += (rfc2822Times[i][0] + ' ');
+				break;
+			}
+		}
+
+		if (rfc2822TzRegex.test(match[6])) {
+			format += 'ZZ'
+		}
 	}
+
 	return format;
+}
+
+function preprocessRFC2822(s) {
+    // Remove comments and folding whitespace and replace multiple-spaces with a single space
+    return s
+        .replace(/\([^)]*\)|[\n\t]/g, ' ')
+        .replace(/(\s\s+)/g, ' ')
+        .replace(/^\s\s*/, '')
+        .replace(/\s\s*$/, '');
 }
