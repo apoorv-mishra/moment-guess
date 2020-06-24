@@ -33,7 +33,7 @@ const rfc2822Regex = /^(?:(Mon|Tue|Wed|Thu|Fri|Sat|Sun)(,)?(\s))?(\d{1,2}\s(?:Ja
 const rfc2822DayOfWeekRegex = /Mon|Tue|Wed|Thu|Fri|Sat|Sun/;
 const rfc2822Dates = [
 	['DD MMM YYYY', /\d{2} (?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{4}/],
-	['D MMM YYYY', /\d  (?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{4}/],
+	['D MMM YYYY', /\d (?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{4}/],
 	['DD MMM YY', /\d{2} (?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{2}/],
 	['D MMM YY', /\d (?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) \d{2}/],
 ];
