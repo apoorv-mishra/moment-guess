@@ -31,20 +31,20 @@ Parser.pattern = new RegExp('^'
  * @returns parsedResult(Object)
  */
 Parser.parse = function(input) {
-	let YEAR_NUMBER_GROUP = 1;
-	let DELIM_1 = 2;
-	let MONTH_NUMBER_GROUP = 3;
-	let DELIM_2 = 4;
-	let DAY_NUMBER_GROUP  = 5;
-	let DELIM_3 = 6;
-	let HOUR_NUMBER_GROUP  = 7;
-	let DELIM_4 = 8;
-	let MINUTE_NUMBER_GROUP = 9;
-	let DELIM_5 = 10;
-	let SECOND_NUMBER_GROUP = 11;
-	let DELIM_6 = 12;
-	let MILLISECOND_NUMBER_GROUP = 13;
-	let TZD_OFFSET_GROUP = 14;
+	const YEAR_NUMBER_GROUP = 1;
+	const DELIM_1 = 2;
+	const MONTH_NUMBER_GROUP = 3;
+	const DELIM_2 = 4;
+	const DAY_NUMBER_GROUP  = 5;
+	const DELIM_3 = 6;
+	const HOUR_NUMBER_GROUP  = 7;
+	const DELIM_4 = 8;
+	const MINUTE_NUMBER_GROUP = 9;
+	const DELIM_5 = 10;
+	const SECOND_NUMBER_GROUP = 11;
+	const DELIM_6 = 12;
+	const MILLISECOND_NUMBER_GROUP = 13;
+	const TZD_OFFSET_GROUP = 14;
 
 	const match = this.pattern.exec(input);
 
