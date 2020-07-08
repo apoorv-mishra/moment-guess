@@ -129,8 +129,6 @@ const ISO8601DateTimeFormatParser = (function() {
 			index: match.index,
 			parser: this.name,
 		};
-
-		return tokens;
 	};
 
 	return Parser;
