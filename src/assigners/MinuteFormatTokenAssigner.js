@@ -9,6 +9,7 @@ const MinuteFormatTokenAssigner = (function () {
 
 	// Regexp for matching the format token 
 	Assigner.map = new Map();
+	Assigner.map.set(/\d{1,2}/, 'm');
 	Assigner.map.set(/\d{2}/, 'mm');
 
 	/**

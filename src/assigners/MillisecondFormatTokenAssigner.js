@@ -9,6 +9,8 @@ const MillisecondFormatTokenAssigner = (function() {
 
 	// Regexp for matching the format token 
 	Assigner.map = new Map();
+	Assigner.map.set(/\d/, 'S');
+	Assigner.map.set(/\d{2}/, 'SS');
 	Assigner.map.set(/\d{3}/, 'SSS');
 
 	/**
@@ -21,7 +23,6 @@ const MillisecondFormatTokenAssigner = (function() {
 		this.map.forEach((formatToken, pattern) => {
 			if (pattern.test(token.getValue())) {
 				token.setFormat(formatToken);
-				return;
 			}
 		});
 	};

@@ -9,7 +9,9 @@ const DayOfMonthFormatTokenAssigner = (function() {
 
 	// Regexp for matching the format token 
 	Assigner.map = new Map();
+	Assigner.map.set(/\d{1,2}/, 'D');
 	Assigner.map.set(/\d{2}/, 'DD');
+	Assigner.map.set(/\d{1,2}(?:st|nd|rd|th)/, 'Do');
 
 	/**
 	 * Assigns the matching format token
@@ -21,7 +23,6 @@ const DayOfMonthFormatTokenAssigner = (function() {
 		this.map.forEach((formatToken, pattern) => {
 			if (pattern.test(token.getValue())) {
 				token.setFormat(formatToken);
-				return;
 			}
 		});
 	};

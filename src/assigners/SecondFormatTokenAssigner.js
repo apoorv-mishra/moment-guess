@@ -9,6 +9,7 @@ const SecondFormatTokenAssigner = (function() {
 
 	// Regexp for matching the format token 
 	Assigner.map = new Map();
+	Assigner.map.set(/\d{1,2}/, 's');
 	Assigner.map.set(/\d{2}/, 'ss');
 
 	/**
@@ -21,7 +22,6 @@ const SecondFormatTokenAssigner = (function() {
 		this.map.forEach((formatToken, pattern) => {
 			if (pattern.test(token.getValue())) {
 				token.setFormat(formatToken);
-				return;
 			}
 		});
 	};

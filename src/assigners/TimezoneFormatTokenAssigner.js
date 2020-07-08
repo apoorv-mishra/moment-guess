@@ -10,6 +10,7 @@ const TimezoneFormatTokenAssigner = (function() {
 	// Regexp for matching the format token 
 	Assigner.map = new Map();
 	Assigner.map.set(/[+-]\d{2}:\d{2}/, 'Z');
+	Assigner.map.set(/[+-]\d{4}/, 'ZZ');
 
 	/**
 	 * Assigns the matching format token
@@ -21,7 +22,6 @@ const TimezoneFormatTokenAssigner = (function() {
 		this.map.forEach((formatToken, pattern) => {
 			if (pattern.test(token.getValue())) {
 				token.setFormat(formatToken);
-				return;
 			}
 		});
 	};

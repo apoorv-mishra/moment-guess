@@ -9,7 +9,9 @@ const YearFormatTokenAssigner = (function() {
 
 	// Regexp for matching the format token 
 	Assigner.map = new Map();
+	Assigner.map.set(/\d{2}/, 'YY');
 	Assigner.map.set(/\d{4}/, 'YYYY');
+	Assigner.map.set(/[+-]\d{6}/, 'YYYYYY');
 
 	/**
 	 * Assigns the matching format token
@@ -21,7 +23,6 @@ const YearFormatTokenAssigner = (function() {
 		this.map.forEach((formatToken, pattern) => {
 			if (pattern.test(token.getValue())) {
 				token.setFormat(formatToken);
-				return;
 			}
 		});
 	};
