@@ -1,28 +1,33 @@
-const Assigner = {};
+const MonthFormatTokenAssigner = (function() {
+	const Assigner = {};
 
-// Assigner name
-Assigner.name = 'MonthFormatTokenAssigner';
+	// Assigner name
+	Assigner.name = 'MonthFormatTokenAssigner';
 
-// Assigner type
-Assigner.type= 'month';
+	// Assigner type
+	Assigner.type= 'month';
 
-// Regexp for matching the format token 
-Assigner.map = new Map();
-Assigner.map.set(/\d{2}/, 'MM');
+	// Regexp for matching the format token 
+	Assigner.map = new Map();
+	Assigner.map.set(/\d{2}/, 'MM');
 
-/**
- * Assigns the matching format token
- * to input token.
- *
- * @params token(Object)
- */
-Assigner.assign = function(token) {
-	this.map.forEach((formatToken, pattern) => {
-		if (pattern.test(token.getValue())) {
-			token.setFormat(formatToken);
-			return;
-		}
-	});
-}
+	/**
+	 * Assigns the matching format token
+	 * to input token.
+	 *
+	 * @params token(Object)
+	 */
+	Assigner.assign = function(token) {
+		this.map.forEach((formatToken, pattern) => {
+			if (pattern.test(token.getValue())) {
+				token.setFormat(formatToken);
+				return;
+			}
+		});
+	};
 
-export default Assigner;
+	return Assigner;
+})();
+
+export default MonthFormatTokenAssigner; 
+

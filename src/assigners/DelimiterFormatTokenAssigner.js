@@ -1,17 +1,22 @@
-const Assigner = {};
+const DelimiterFormatTokenAssigner = (function() {
+	const Assigner = {};
 
-// Assigner name
-Assigner.name = 'DelimiterFormatTokenAssigner';
+	// Assigner name
+	Assigner.name = 'DelimiterFormatTokenAssigner';
 
-// Assigner type
-Assigner.type= 'delimiter';
+	// Assigner type
+	Assigner.type= 'delimiter';
 
-/**
- * Assigns the matching format token
- * to input token.
- *
- * @params token(Object)
- */
-Assigner.assign = function(token) { /* noop */ }
+	/**
+	 * Assigns the matching format token
+	 * to input token.
+	 *
+	 * @params token(Object)
+	 */
+	Assigner.assign = function(token) { /* noop */ };
 
-export default Assigner;
+	return Assigner;
+
+})();
+
+export default DelimiterFormatTokenAssigner; 
