@@ -69,9 +69,7 @@ export default class Guesser {
 	assignFormatTokens(tokens) {
 		this.assigners.forEach(assigner => {
 			tokens.forEach(token => {
-				if (!token.format && token.type === assigner.type) {
-					assigner.assign(token);
-				}
+				assigner.assign(token);
 			});
 		});
 	}

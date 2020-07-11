@@ -15,6 +15,18 @@ const HourFormatTokenAssigner = (function() {
 	Assigner.map.set(/0\d|1[0-2]/, 'hh');
 
 	/**
+	 * Tests whether token type is same as
+	 * Assigner type.
+	 *
+	 * @params token(Object)
+	 *
+	 * @returns Boolean
+	 */
+	Assigner._testTokenType = function(token) {
+		return token.getType() === this.type;
+	}
+
+	/**
 	 * Assigns the matching format token
 	 * to input token.
 	 *
@@ -22,7 +34,7 @@ const HourFormatTokenAssigner = (function() {
 	 */
 	Assigner.assign = function(token) {
 		this.map.forEach((formatToken, pattern) => {
-			if (pattern.test(token.getValue())) {
+			if (this._testTokenType(token) && pattern.test(token.getValue())) {
 				token.setFormat(formatToken);
 			}
 		});
