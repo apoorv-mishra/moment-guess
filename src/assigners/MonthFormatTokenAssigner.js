@@ -12,8 +12,8 @@ const MonthFormatTokenAssigner = (function() {
 	Assigner.map.set(/\d{1,2}/, 'M');
 	Assigner.map.set(/\d{2}/, 'MM');
 	Assigner.map.set(/\d{1,2}(?:st|nd|rd|th)/, 'Mo');
-	Assigner.map.set(/Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec/, 'MMM');
-	Assigner.map.set(/January|February|March|April|May|June|July|August|September|October|November|December/, 'MMMM');
+	Assigner.map.set(/^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)$/, 'MMM');
+	Assigner.map.set(/^(January|February|March|April|May|June|July|August|September|October|November|December)$/, 'MMMM');
 
 	/**
 	 * Tests whether token type is same as
