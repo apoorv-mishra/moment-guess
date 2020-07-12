@@ -2,22 +2,32 @@ import YearFormatTokenAssigner from './YearFormatTokenAssigner.js';
 import MonthFormatTokenAssigner from './MonthFormatTokenAssigner.js';
 import DayOfMonthFormatTokenAssigner from './DayOfMonthFormatTokenAssigner.js';
 import DelimiterFormatTokenAssigner from './DelimiterFormatTokenAssigner.js';
-import HourFormatTokenAssigner from './HourFormatTokenAssigner.js';
 import MinuteFormatTokenAssigner from './MinuteFormatTokenAssigner.js';
 import SecondFormatTokenAssigner from './SecondFormatTokenAssigner.js';
 import MillisecondFormatTokenAssigner from './MillisecondFormatTokenAssigner.js';
 import TimezoneFormatTokenAssigner from './TimezoneFormatTokenAssigner.js';
+import DayOfYearFormatTokenAssigner from './DayOfYearFormatTokenAssigner.js';
+import EscapeTextFormatTokenAssigner from './EscapeTextFormatTokenAssigner.js';
+import ISODayOfWeekFormatTokenAssigner from './ISODayOfWeekFormatTokenAssigner.js';
+import ISOWeekOfYearFormatTokenAssigner from './ISOWeekOfYearFormatTokenAssigner.js';
+import TwentyFourHourFormatTokenAssigner from './TwentyFourHourFormatTokenAssigner.js';
+import TwelveHourFormatTokenAssigner from './TwelveHourFormatTokenAssigner.js';
 
 const assigners = [
 	YearFormatTokenAssigner,
 	MonthFormatTokenAssigner,
 	DayOfMonthFormatTokenAssigner,
 	DelimiterFormatTokenAssigner,
-	HourFormatTokenAssigner,
 	MinuteFormatTokenAssigner,
 	SecondFormatTokenAssigner,
 	MillisecondFormatTokenAssigner,
 	TimezoneFormatTokenAssigner,
+	DayOfYearFormatTokenAssigner,
+	EscapeTextFormatTokenAssigner,
+	ISODayOfWeekFormatTokenAssigner,
+	ISOWeekOfYearFormatTokenAssigner,
+	TwentyFourHourFormatTokenAssigner,
+	TwelveHourFormatTokenAssigner,
 ];
 
 export default assigners;

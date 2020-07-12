@@ -1,17 +1,16 @@
-const TimezoneFormatTokenAssigner = (function() {
+const TwelveHourFormatTokenAssigner = (function() {
 	const Assigner = {};
 
 	// Assigner name
-	Assigner.name = 'TimezoneFormatTokenAssigner';
+	Assigner.name = 'TwelveHourFormatTokenAssigner';
 
 	// Assigner type
-	Assigner.type= 'timezone';
+	Assigner.type= 'twelveHour';
 
 	// Regexp for matching the format token 
 	Assigner.map = new Map();
-	Assigner.map.set(/[+-]\d{2}(?::\d{2})?/, 'Z');
-	Assigner.map.set(/[+-]\d{4}/, 'ZZ');
-	Assigner.map.set(/Z/, 'Z');
+	Assigner.map.set(/^([1-9]|1[0-2])$/, 'h');
+	Assigner.map.set(/^(0\d|1[0-2])$/, 'hh');
 
 	/**
 	 * Tests whether token type is same as
@@ -42,4 +41,4 @@ const TimezoneFormatTokenAssigner = (function() {
 	return Assigner;
 })(); 
 
-export default TimezoneFormatTokenAssigner;
+export default TwelveHourFormatTokenAssigner; 

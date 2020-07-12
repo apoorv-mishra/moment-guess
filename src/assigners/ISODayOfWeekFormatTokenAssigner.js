@@ -1,17 +1,15 @@
-const TimezoneFormatTokenAssigner = (function() {
+const ISODayOfWeekFormatTokenAssigner = (function() {
 	const Assigner = {};
 
 	// Assigner name
-	Assigner.name = 'TimezoneFormatTokenAssigner';
+	Assigner.name = 'ISODayOfWeekFormatTokenAssigner';
 
 	// Assigner type
-	Assigner.type= 'timezone';
+	Assigner.type= 'isoDayOfWeek';
 
 	// Regexp for matching the format token 
 	Assigner.map = new Map();
-	Assigner.map.set(/[+-]\d{2}(?::\d{2})?/, 'Z');
-	Assigner.map.set(/[+-]\d{4}/, 'ZZ');
-	Assigner.map.set(/Z/, 'Z');
+	Assigner.map.set(/[1-7]/, 'E');
 
 	/**
 	 * Tests whether token type is same as
@@ -42,4 +40,4 @@ const TimezoneFormatTokenAssigner = (function() {
 	return Assigner;
 })(); 
 
-export default TimezoneFormatTokenAssigner;
+export default ISODayOfWeekFormatTokenAssigner; 
