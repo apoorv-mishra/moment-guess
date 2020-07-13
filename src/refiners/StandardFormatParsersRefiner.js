@@ -19,6 +19,7 @@ const StandardFormatParsersRefiner = (function() {
 		// parsed result will be returned.
 		return parsedResults.filter(r => {
 			return r.parser === 'ISO8601ExtendedDateTimeFormatParser' ||
+				r.parser === 'ISO8601BasicDateTimeFormatParser' ||
 				r.parser === 'RFC2822DateTimeFormatParser';
 		});
 	};

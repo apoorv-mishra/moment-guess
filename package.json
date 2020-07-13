@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "build": "rollup --config"
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "pretest": "npm run build"
   },
   "author": "Apoorv Mishra",
   "license": "MIT",

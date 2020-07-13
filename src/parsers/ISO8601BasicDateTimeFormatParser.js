@@ -1,6 +1,6 @@
 import Token from './Token.js';
 
-const ISO8601ExtendedDateTimeFormatParser = (function() {
+const ISO8601BasicDateTimeFormatParser = (function() {
 
 	/**
 	 * ISO 8601
@@ -9,21 +9,20 @@ const ISO8601ExtendedDateTimeFormatParser = (function() {
 	const Parser = {};
 
 	// Parser name
-	Parser.name = 'ISO8601ExtendedDateTimeFormatParser';
+	Parser.name = 'ISO8601BasicDateTimeFormatParser';
 
 	Parser.pattern = new RegExp('^'
 		+ '([+-]\\d{6}|\\d{4})'
-		+ '(\\-)'
 		+ '(?:'
-			+ '(\\d{2})(?:(\\-)(\\d{2}))?'
+			+ '(\\d{2})(?:(\\d{2}))?'
 			+ '|'
-			+ '(W)(\\d{2})(?:(\\-)(\\d))?'
+			+ '(W)(\\d{2})(?:(\\d))?'
 			+ '|'
 			+ '(\\d{3})'
-		+ ')'
+		+ ')?'
 		+ '(?:'
 			+ '(T| )'
-			+ '(?:(\\d{2})(?:(:)(\\d{2})(?:(:)(\\d{2})(?:([.,])(\\d{1,9}))?)?)?)'
+			+ '(?:(\\d{2})(?:(\\d{2})(?:(\\d{2})(?:([.,])(\\d{1,9}))?)?)?)'
 			+ '([+-]\\d{2}(?::?\\d{2})?|Z)?'
 		+ ')?'
 		+ '$'
@@ -37,24 +36,19 @@ const ISO8601ExtendedDateTimeFormatParser = (function() {
 	 */
 	Parser.parse = function(input) {
 		const YEAR_NUMBER_GROUP = 1;
-		const DELIM_1 = 2;
-		const MONTH_NUMBER_GROUP = 3;
-		const DELIM_2 = 4;
-		const DAY_NUMBER_GROUP  = 5;
-		const ESCAPE_TEXT_GROUP = 6;
-		const WEEK_NUMBER_GROUP = 7;
-		const DELIM_3 = 8;
-		const WEEKDAY_NUMBER_GROUP = 9;
-		const DAY_OF_YEAR = 10
-		const DELIM_4 = 11;
-		const HOUR_NUMBER_GROUP = 12;
-		const DELIM_5 = 13;
-		const MINUTE_NUMBER_GROUP = 14;
-		const DELIM_6 = 15;
-		const SECOND_NUMBER_GROUP = 16;
-		const DELIM_7 = 17;
-		const MILLISECOND_NUMBER_GROUP = 18;
-		const TIMEZONE_OFFSET_GROUP = 19;
+		const MONTH_NUMBER_GROUP = 2;
+		const DAY_NUMBER_GROUP  = 3;
+		const ESCAPE_TEXT_GROUP = 4;
+		const WEEK_NUMBER_GROUP = 5;
+		const WEEKDAY_NUMBER_GROUP = 6;
+		const DAY_OF_YEAR = 7;
+		const DELIM_1 = 8;
+		const HOUR_NUMBER_GROUP = 9;
+		const MINUTE_NUMBER_GROUP = 10;
+		const SECOND_NUMBER_GROUP = 11;
+		const DELIM_2 = 12;
+		const MILLISECOND_NUMBER_GROUP = 13;
+		const TIMEZONE_OFFSET_GROUP = 14;
 
 		const match = this.pattern.exec(input);
 
@@ -69,29 +63,17 @@ const ISO8601ExtendedDateTimeFormatParser = (function() {
 		}));
 		if (match[MONTH_NUMBER_GROUP]) {
 			tokens.push(new Token({
-				value: match[DELIM_1],
-				type: 'delimiter',
-			}));
-			tokens.push(new Token({
 				value: match[MONTH_NUMBER_GROUP],
 				type: 'month',
 			}));
 
 			if (match[DAY_NUMBER_GROUP]) {
 				tokens.push(new Token({
-					value: match[DELIM_2],
-					type: 'delimiter',
-				}));
-				tokens.push(new Token({
 					value: match[DAY_NUMBER_GROUP],
 					type: 'dayOfMonth',
 				}));
 			}
 		} else if (match[WEEK_NUMBER_GROUP]) {
-			tokens.push(new Token({
-				value: match[DELIM_1],
-				type: 'delimiter',
-			}));
 			tokens.push(new Token({
 				value: match[ESCAPE_TEXT_GROUP],
 				type: 'escapeText',
@@ -103,19 +85,11 @@ const ISO8601ExtendedDateTimeFormatParser = (function() {
 
 			if (match[WEEKDAY_NUMBER_GROUP]) {
 				tokens.push(new Token({
-					value: match[DELIM_3],
-					type: 'delimiter',
-				}));
-				tokens.push(new Token({
 					value: match[WEEKDAY_NUMBER_GROUP],
 					type: 'isoDayOfWeek',
 				}));
 			} 
-		} else {
-			tokens.push(new Token({
-				value: match[DELIM_1],
-				type: 'delimiter',
-			}));
+		} else if (match[DAY_OF_YEAR]) {
 			tokens.push(new Token({
 				value: match[DAY_OF_YEAR],
 				type: 'dayOfYear',
@@ -124,7 +98,7 @@ const ISO8601ExtendedDateTimeFormatParser = (function() {
 
 		if (match[HOUR_NUMBER_GROUP]) {
 			tokens.push(new Token({
-				value: match[DELIM_4],
+				value: match[DELIM_1],
 				type: 'delimiter',
 			}));
 			tokens.push(new Token({
@@ -133,25 +107,17 @@ const ISO8601ExtendedDateTimeFormatParser = (function() {
 			}));
 			if (match[MINUTE_NUMBER_GROUP]) {
 				tokens.push(new Token({
-					value: match[DELIM_5],
-					type: 'delimiter',
-				}));
-				tokens.push(new Token({
 					value: match[MINUTE_NUMBER_GROUP],
 					type: 'minute',
 				}));
 				if (match[SECOND_NUMBER_GROUP]) {
-					tokens.push(new Token({
-						value: match[DELIM_6],
-						type: 'delimiter',
-					}));
 					tokens.push(new Token({
 						value: match[SECOND_NUMBER_GROUP],
 						type: 'second',
 					}));
 					if (match[MILLISECOND_NUMBER_GROUP]) {
 						tokens.push(new Token({
-							value: match[DELIM_7],
+							value: match[DELIM_2],
 							type: 'delimiter',
 						}));
 						tokens.push(new Token({
@@ -181,4 +147,4 @@ const ISO8601ExtendedDateTimeFormatParser = (function() {
 })();
 
 
-export default ISO8601ExtendedDateTimeFormatParser; 
+export default ISO8601BasicDateTimeFormatParser; 
