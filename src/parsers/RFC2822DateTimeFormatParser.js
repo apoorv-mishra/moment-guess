@@ -58,7 +58,7 @@ const RFC2822DateTimeFormatParser = (function() {
 		if (match[DAY_OF_WEEK_GROUP]) {
 			tokens.push(new Token({
 				value: match[DAY_OF_WEEK_GROUP],
-				type: 'dayOfWeek', // add assigner
+				type: 'dayOfWeek',
 			}));
 
 			if (match[COMMA_GROUP]) {
