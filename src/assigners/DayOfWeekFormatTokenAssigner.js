@@ -1,20 +1,19 @@
-const TimezoneFormatTokenAssigner = (function() {
+const DayOfWeekFormatTokenAssigner = (function() {
 	const Assigner = {};
 
 	// Assigner name
-	Assigner.name = 'TimezoneFormatTokenAssigner';
+	Assigner.name = 'DayOfWeekFormatTokenAssigner';
 
 	// Assigner type
-	Assigner.type= 'timezone';
+	Assigner.type= 'dayOfWeek';
 
-	// Regexp for matching the format token 
+	// Regexp for ma tching the format token 
 	Assigner.map = new Map();
-	Assigner.map.set(/[+-]\d{2}(?::\d{2})?/, 'Z');
-	Assigner.map.set(/[+-]\d{4}/, 'ZZ');
-	Assigner.map.set(/Z/, 'Z');
-
-	// Specifically for timezone in RFC 2822 compliant dates
-	Assigner.map.set(/\s(?:(?:UT|GMT|[ECMP][SD]T)|[Zz]|[+-]\d{4})/, ' ZZ');
+	Assigner.map.set(/[0-6]/, 'd');
+	Assigner.map.set(/[0-6](?:st|nd|rd|th)/, 'do');
+	Assigner.map.set(/(?:Su|Mo|Tu|We|Th|Fr|Sa)/, 'dd');
+	Assigner.map.set(/(?:Sun|Mon|Tue|Wed|Thu|Fri|Sat)/, 'ddd');
+	Assigner.map.set(/(?:Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday)/, 'dddd');
 
 	/**
 	 * Tests whether token type is same as
@@ -45,4 +44,4 @@ const TimezoneFormatTokenAssigner = (function() {
 	return Assigner;
 })(); 
 
-export default TimezoneFormatTokenAssigner;
+export default DayOfWeekFormatTokenAssigner; 

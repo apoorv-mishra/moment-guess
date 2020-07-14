@@ -12,6 +12,7 @@ import ISODayOfWeekFormatTokenAssigner from './ISODayOfWeekFormatTokenAssigner.j
 import ISOWeekOfYearFormatTokenAssigner from './ISOWeekOfYearFormatTokenAssigner.js';
 import TwentyFourHourFormatTokenAssigner from './TwentyFourHourFormatTokenAssigner.js';
 import TwelveHourFormatTokenAssigner from './TwelveHourFormatTokenAssigner.js';
+import DayOfWeekFormatTokenAssigner from './DayOfWeekFormatTokenAssigner.js';
 
 const assigners = [
 	YearFormatTokenAssigner,
@@ -28,6 +29,7 @@ const assigners = [
 	ISOWeekOfYearFormatTokenAssigner,
 	TwentyFourHourFormatTokenAssigner,
 	TwelveHourFormatTokenAssigner,
+	DayOfWeekFormatTokenAssigner,
 ];
 
 export default assigners;
