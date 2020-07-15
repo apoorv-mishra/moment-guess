@@ -2,6 +2,14 @@
   "name": "moment-guess",
   "version": "1.0.0",
   "description": "A utility package for guessing date's format",
+  "homepage": "https://github.com/apoorv-mishra/moment-guess#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apoorv-mishra/moment-guess.git"
+  },
+  "bugs": {
+    "url": "https://github.com/apoorv-mishra/moment-guess/issues"
+  },
   "main": "index.js",
   "scripts": {
     "test": "jest",
