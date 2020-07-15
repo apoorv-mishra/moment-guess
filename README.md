@@ -44,7 +44,7 @@ npm run test
 
 ## :man: Author
 
-👤 **Apoorv Mishra**
+**Apoorv Mishra**
 
 * Github: [@apoorv-mishra](https://github.com/apoorv-mishra)
 * LinkedIn: [Apoorv Mishra](https://www.linkedin.com/in/apoorv-mishra-76a06249/)
