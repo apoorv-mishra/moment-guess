@@ -14,9 +14,7 @@
 
 > A utility package for guessing date's format
 
-### 🏠 [Homepage](https://github.com/apoorv-mishra/moment-guess#readme)
-
-## :package: Install
+## :package: Installation
 
 ```sh
 npm install moment-guess
