@@ -16,13 +16,13 @@
 
 ### 🏠 [Homepage](https://github.com/apoorv-mishra/moment-guess#readme)
 
-## Install
+## :package: Install
 
 ```sh
 npm install moment-guess
 ```
 
-## Usage
+## 👨‍💻 Usage
 ```javascript
 const guessFormat = require('moment-guess');
 
@@ -36,17 +36,18 @@ console.log(guessFormat('6 Mar 17 21:22 UT')); // D MMM YY HH:mm ZZ
 console.log(guessFormat('Mon, 06 Mar 2017 21:22:23 +0000')); // ddd, DD MMM YYYY HH:mm:ss ZZ
 ```
 
-## Run tests
+## :hammer: Run tests
 
 ```sh
 npm run test
 ```
 
-## Author
+## :man: Author
 
 👤 **Apoorv Mishra**
 
 * Github: [@apoorv-mishra](https://github.com/apoorv-mishra)
+* LinkedIn: [Apoorv Mishra](https://www.linkedin.com/in/apoorv-mishra-76a06249/)
 
 ## 🤝 Contributing
 
