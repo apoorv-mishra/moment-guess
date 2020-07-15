@@ -14,6 +14,8 @@
 
 > A utility package for guessing date's format
 
+### *Warning*: Work in progress ahead! 🚧
+
 ## :package: Installation
 
 ```sh
