@@ -1,17 +1,18 @@
 import resolve from '@rollup/plugin-node-resolve';
 import {terser} from 'rollup-plugin-terser';
+import pkg from './package.json';
 
 export default {
 	input: 'index.js',
 	output: [
 		{
-			file: 'dist/bundle.js',
+			file: pkg.main,
 			format: 'umd',
 			name: 'MomentGuess',
 			sourcemap: true,
 		},
 		{
-			file: 'dist/bundle.min.js',
+			file: pkg.browser,
 			format: 'umd',
 			name: 'MomentGuess',
 			plugins: [ terser() ],
