@@ -1,20 +1,49 @@
-# moment-guess
-A utility package for guessing date's format
+# Welcome to moment-guess 👋
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
+[![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/apoorv-mishra/moment-guess#readme)
+[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/apoorv-mishra/moment-guess/graphs/commit-activity)
+[![License: MIT](https://img.shields.io/github/license/apoorv-mishra/moment-guess)](https://github.com/apoorv-mishra/moment-guess/blob/master/LICENSE)
 
-### Setup Instructions
-1. Clone the repository
-2. `cd moment-guess`
-3. `npm run build`
+> A utility package for guessing date's format
 
-### Usage
-1. `cd moment-guess && mkdir quick-test`
-2. `cd quick-test && touch quick-test.js`
-3. In `quick-test.js`, add,
-```javascript
-const guessFormat = require('../dist/bundle.js');
+### 🏠 [Homepage](https://github.com/apoorv-mishra/moment-guess#readme)
 
-// ISO 8601
-console.log(guessFormat('2020-06-23T00:20:49+05:30')); // YYYY-MM-DDTHH:mm:ssZ
-console.log(guessFormat('2020-10-10')); // YYYY-MM-DD
+## Install
+
+```sh
+npm install
 ```
-4. `node quick-test.js`
+
+## Run tests
+
+```sh
+npm run test
+```
+
+## Author
+
+👤 **Apoorv Mishra**
+
+* Github: [@apoorv-mishra](https://github.com/apoorv-mishra)
+
+## 🤝 Contributing
+
+Contributions, issues and feature requests are welcome!
+
+Feel free to check [issues page](https://github.com/apoorv-mishra/moment-guess/issues). 
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+[![support us](https://img.shields.io/badge/become-a patreon%20us-orange.svg?cacheSeconds=2592000)](https://www.patreon.com/apoorvmishra)
+
+
+## 📝 License
+
+Copyright © 2020 [Apoorv Mishra](https://github.com/apoorv-mishra).
+
+This project is [MIT](https://github.com/apoorv-mishra/moment-guess/blob/master/LICENSE) licensed.
+
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
