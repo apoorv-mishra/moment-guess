@@ -12,7 +12,7 @@
   </a>
 </p>
 
-> A utility package for guessing date's format
+> :tada: A utility package for guessing date's format :alarm_clock: :raised_hands:
 
 ### *Warning*: Work in progress ahead! 🚧
 
