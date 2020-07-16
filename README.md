@@ -49,6 +49,17 @@ console.log(guessFormat('Mon, 06 Mar 2017 21:22:23 +0000')); // ddd, DD MMM YYYY
 npm run test
 ```
 
+## :mag: How does it work?
+<img src="./design.png"/>
+
+Entire module is split up into three main components, _parsers_, _refiners_ and _assigners_.
+
+* _Parsers_ break the input into individual tokens, giving meaning to each token(whether it's year, month, day...).
+
+* _Refiners_ refine the parsed results based on certain chosen heuristics in case the input matched multiple parsers.
+
+* _Assigners_ assign the appropriate format tokens(don't confuse these with generated tokens from input) enlisted [here](https://momentjs.com/docs/#/displaying/) to each corresponding token based on the meaning given to the token by the parser(example, *YYYY* for a four digit year token).
+
 ## :man: Author
 
 **Apoorv Mishra**
