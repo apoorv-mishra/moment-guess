@@ -35,6 +35,13 @@ console.log(guessFormat('2013-02-08T09:30:26+07:00')); // YYYY-MM-DDTHH:mm:ssZ
 console.log(guessFormat('6 Mar 17 21:22 UT')); // D MMM YY HH:mm ZZ
 console.log(guessFormat('Mon, 06 Mar 2017 21:22:23 +0000')); // ddd, DD MMM YYYY HH:mm:ss ZZ
 ```
+## :thinking: Motivation
+
+**Designer**: *Hey, could you please display date on the rightmost part of the row in a format similar to Fri, 6th March 2020, 10:00 AM?*
+
+**Me**: *Sure. (types on screen ... moment().format(// Uh Oh!, what should I put here?))*
+
+**Methinks**: *Hmm...such requirements pop up once in a while, not everyday(at least for me). And everytime it happens, I end up sifting through momentjs docs [here](https://momentjs.com/docs/#/displaying/) to choose the right format tokens in order to display date in the desired format("ddd, Do MMMM YYYY, hh:mm A" in this case). Can this be avoided?*
 
 ## :hammer: Run tests
 
