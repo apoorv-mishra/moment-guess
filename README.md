@@ -39,9 +39,9 @@ console.log(guessFormat('Mon, 06 Mar 2017 21:22:23 +0000')); // ddd, DD MMM YYYY
 
 **Designer**: *Hey, could you please display date on the rightmost part of the row in a format similar to Fri, 6th March 2020, 10:00 AM?*
 
-**Me**: *Sure. (types on screen ... moment().format(// Uh Oh!, what should I put here?))*
+**Me**: *Sure. (types on screen ... moment(timestampFromDB).format(// Uh Oh!, what should I put here?))*
 
-**Methinks**: *Hmm...such requirements pop up once in a while, not everyday(at least for me). And everytime it happens, I end up sifting through momentjs docs [here](https://momentjs.com/docs/#/displaying/) to choose the right format tokens in order to display date in the desired format("ddd, Do MMMM YYYY, hh:mm A" in this case). Can this be avoided?*
+**Methinks**: *Hmm...such requirements pop up once in a while, not everyday(at least for me). And everytime it happens, I end up sifting through momentjs docs [here](https://momentjs.com/docs/#/displaying/) to choose the right format tokens in order to display date in the desired format("ddd, Do MMMM YYYY, hh:mm A" in this case). Can this be avoided? Is it possible to guess a date's format from the desired date value itself?*
 
 ## :hammer: Run tests
 
