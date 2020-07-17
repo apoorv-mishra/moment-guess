@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to moment-guess 👋<br> <img src="./logo.png" /></h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.3-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.4-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/apoorv-mishra/moment-guess#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
@@ -14,30 +14,18 @@
 
 > :tada: A utility package for guessing date's format :alarm_clock: :raised_hands:
 
-### *Warning*: Work in progress ahead! 🚧
+<img alt="Demo" src="https://imgur.com/nso1TQ4.gif" />
 
-## :package: Installation
-
-```sh
-npm install moment-guess
-```
+<h2 align="center"><em>Warning</em>: Work in progress ahead! 🚧</h3>
 
 ## 👨‍💻 Usage
-```javascript
-const guessFormat = require('moment-guess');
-
-// ISO 8601 compliant dates
-console.log(guessFormat('2020-10-10')); // YYYY-MM-DD
-console.log(guessFormat('2013-02-08T09:30:26')); // YYYY-MM-DDTHH:mm:ss
-console.log(guessFormat('2013-02-08T09:30:26+07:00')); // YYYY-MM-DDTHH:mm:ssZ
-
-// RFC 2822 compliant dates
-console.log(guessFormat('6 Mar 17 21:22 UT')); // D MMM YY HH:mm ZZ
-console.log(guessFormat('Mon, 06 Mar 2017 21:22:23 +0000')); // ddd, DD MMM YYYY HH:mm:ss ZZ
+```sh
+npx moment-guess --help
 ```
+
 ## :thinking: Motivation
 
-**Designer**: *Hey, could you please display date on the rightmost part of the row in a format similar to Fri, 6th March 2020, 10:00 AM?*
+**PM**: *Hey, could you please display date on the rightmost part of the row in a format similar to Fri, 6th March 2020, 10:00 AM?*
 
 **Me**: *Sure. (types on screen ... moment(timestampFromDB).format(// Uh Oh!, what should I put here?))*
 
