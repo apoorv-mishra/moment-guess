@@ -120,3 +120,4 @@ quick-test/*
 *~
 *.swo
 *.swp
+bin
