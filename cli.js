@@ -55,25 +55,27 @@ const showVersion = () => console.log(chalk.bold.white(pkg.version));
 			'-d': '--date',
 			'-p': '--preference',
 		});
+
+		if (args['--help']) {
+			return showHelp()
+		}
+		if (args['--version']) {
+			return showVersion();
+		}
+		if (args['--date']) {
+			date = args['--date'];
+		}
+
+		if (!date) {
+			console.log(chalk`{bold.red Error:} {red Missing date!}`);
+			return showUsage();
+		}
+
+		console.log(chalk.bold.white(guessFormat(date, config)));
+
 	} catch (err) {
 		console.error(error(err.message));
 		process.exit(1);
 	}
-
-	if (args['--help']) {
-		return showHelp()
-	}
-	if (args['--version']) {
-		return showVersion();
-	}
-	if (args['--date']) {
-		date = args['--date'];
-	}
-
-	if (!date) {
-		console.log(chalk`{bold.red Error:} {red Missing date!}`);
-		return showUsage();
-	}
-	console.log(chalk.bold.white(guessFormat(date, config)));
 })();
 
