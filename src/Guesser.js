@@ -43,10 +43,6 @@ export default class Guesser {
 	 * @returns tokens(Array of Objects)
 	 */
 	refineParsedResults(parsedResults) {
-		if (parsedResults.length <= 1) {
-			return parsedResults;
-		}
-
 		let refinedParsedResults = [...parsedResults];
 		this.refiners.forEach(refiner => {
 			refinedParsedResults = [
