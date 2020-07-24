@@ -71,6 +71,13 @@ const showVersion = () => console.log(chalk.bold.white(pkg.version));
 			return showUsage();
 		}
 
+		const res = guessFormat(date, config);
+
+		if (res instanceof Array) {
+			console.log(chalk.cyan('Multiple formats matched!\n'));
+			return res.forEach(f => console.log(chalk.bold.white(f)));
+		}
+
 		console.log(chalk.bold.white(guessFormat(date, config)));
 
 	} catch (err) {

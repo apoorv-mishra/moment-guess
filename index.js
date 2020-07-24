@@ -7,7 +7,12 @@ export default function guessFormat(date, options = {}) {
 	if (refinedParsedResults.length === 0) {
 	    throw Error("Couldn't parse date");
 	}
-	const tokens = refinedParsedResults[0].tokens;
-	guesser.assignFormatTokens(tokens);
-	return guesser.getFormatString(tokens);
+	refinedParsedResults.forEach(r => guesser.assignFormatTokens(r.tokens));
+	let matchedFormats = [];
+	refinedParsedResults.forEach(r => matchedFormats.push(guesser.getFormatString(r.tokens)));
+	return (
+		matchedFormats.length === 1
+		? matchedFormats[0]
+		: matchedFormats
+	);
 }
