@@ -50,7 +50,7 @@ const RFC2822DateTimeFormatParser = (function() {
 		return {
 			tokens: tokens,
 			index: match.index,
-			name: this.name,
+			parser: this.name,
 		};
 
 	}

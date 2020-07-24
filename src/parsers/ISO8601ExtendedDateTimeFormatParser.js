@@ -54,7 +54,7 @@ const ISO8601ExtendedDateTimeFormatParser = (function() {
 		return {
 			tokens: tokens,
 			index: match.index,
-			name: this.name,
+			parser: this.name,
 		};
 	};
 

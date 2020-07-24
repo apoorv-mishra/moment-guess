@@ -53,7 +53,7 @@ const ISO8601BasicDateTimeFormatParser = (function() {
 		return {
 			tokens: tokens,
 			index: match.index,
-			name: this.name,
+			parser: this.name,
 		};
 	};
 
