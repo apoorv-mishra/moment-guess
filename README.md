@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to moment-guess 👋<br> <img src="./logo.png" /></h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.4-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.6-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/apoorv-mishra/moment-guess#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
@@ -22,6 +22,15 @@
 ```sh
 npx moment-guess --help
 ```
+## 🙌 Supported Formats
+- *2020-07-24T17:09:03+00:00*([IS0 8601](https://en.wikipedia.org/wiki/ISO_8601))
+
+- *Mon, 06 Mar 2017 21:22:23 +0000*([RFC 2822](https://tools.ietf.org/html/rfc2822#section-3.3))
+
+- *31/12/2020, 1.1.2020, 31-12-20*(slash, dot or dash delimited dates, both US and UK styles)
+
+## 🤷‍♀️ What happens in case of ambiguous input?
+If the input is ambiguous like 01/01/2020(could mean DD/MM/YYYY or MM/DD/YYYY), **it would display all possible matched formats**. Try `npx -q moment-guess -d '01/01/2020'`
 
 ## :thinking: Motivation
 
