@@ -4,6 +4,7 @@ import RFC2822DateTimeFormatParser from './RFC2822DateTimeFormatParser';
 import SlashDelimitedDateFormatParser from './SlashDelimitedDateFormatParser';
 import UKStyleSlashDelimitedDateFormatParser from './UKStyleSlashDelimitedDateFormatParser';
 import USStyleSlashDelimitedDateFormatParser from './USStyleSlashDelimitedDateFormatParser';
+import MonthNameAndDayOfMonthDateFormatParser from './MonthNameAndDayOfMonthDateFormatParser';
 
 const parsers = [
 	ISO8601ExtendedDateTimeFormatParser,
@@ -12,6 +13,7 @@ const parsers = [
 	SlashDelimitedDateFormatParser,
 	UKStyleSlashDelimitedDateFormatParser,
 	USStyleSlashDelimitedDateFormatParser,
+	MonthNameAndDayOfMonthDateFormatParser,
 ];
 
 export default parsers;
