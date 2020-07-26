@@ -29,10 +29,6 @@ describe('Month followed by day of month type dates', () => {
 		expect(guessFormat('January 31st')).toBe('MMMM Do');
 	});
 
-	test('# prepended delimiter', () => {
-		expect(guessFormat(' January 31st')).toBe(' MMMM Do');
-	});
-
 	test('# appended delimiter(s)', () => {
 		expect(guessFormat('January 31st, ')).toBe('MMMM Do, ');
 	});
