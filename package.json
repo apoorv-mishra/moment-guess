@@ -10,8 +10,6 @@
   "bugs": {
     "url": "https://github.com/apoorv-mishra/moment-guess/issues"
   },
-  "main": "dist/bundle.js",
-  "browser": "dist/bundle.min.js",
   "bin": {
     "moment-guess": "bin/bundle.cli.js"
   },
@@ -36,7 +34,6 @@
     "chalk": "^4.1.0"
   },
   "files": [
-    "dist",
     "bin"
   ]
 }
