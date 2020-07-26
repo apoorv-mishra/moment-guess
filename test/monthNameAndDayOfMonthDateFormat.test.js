@@ -32,4 +32,28 @@ describe('Month followed by day of month type dates', () => {
 	test('# appended delimiter(s)', () => {
 		expect(guessFormat('January 31st, ')).toBe('MMMM Do, ');
 	});
+
+	test('# prepend day of week (shortest)', () => {
+		expect(guessFormat('Su, January 31st')).toBe('dd, MMMM Do');
+	});
+
+	test('# prepend day of week (short)', () => {
+		expect(guessFormat('Sun, January 31st')).toBe('ddd, MMMM Do');
+	});
+
+	test('# prepend day of week (full)', () => {
+		expect(guessFormat('Sunday, January 31st')).toBe('dddd, MMMM Do');
+	});
+
+	test('# append year (short)', () => {
+		expect(guessFormat('January 31st, 20')).toBe('MMMM Do, YY');
+	});
+
+	test('# append year', () => {
+		expect(guessFormat('January 31st, 2020')).toBe('MMMM Do, YYYY');
+	});
+
+	test('# full date', () => {
+		expect(guessFormat('Sunday, January 31st 2020')).toBe('dddd, MMMM Do YYYY');
+	});
 });

@@ -10,7 +10,9 @@ describe('Day of month followed by month name type dates', () => {
 	});
 
 	test('# parse valid day of month', () => {
-		expect(guessFormat('32 Jan')).toBe('D MMM');
+		expect(() => {
+			guessFormat('32 Jan');
+		}).toThrow(Error("Couldn't parse date"));
 	});
 
 	test('# day of month with ordinal', () => {
@@ -31,5 +33,29 @@ describe('Day of month followed by month name type dates', () => {
 
 	test('# appended delimiter(s)', () => {
 		expect(guessFormat('31st January, ')).toBe('Do MMMM, ');
+	});
+
+	test('# prepend day of week (shortest)', () => {
+		expect(guessFormat('Su, 31st January')).toBe('dd, Do MMMM');
+	});
+
+	test('# prepend day of week (short)', () => {
+		expect(guessFormat('Sun, 31st January')).toBe('ddd, Do MMMM');
+	});
+
+	test('# prepend day of week (full)', () => {
+		expect(guessFormat('Sunday, 31st January')).toBe('dddd, Do MMMM');
+	});
+
+	test('# append year (short)', () => {
+		expect(guessFormat('31st January, 20')).toBe('Do MMMM, YY');
+	});
+
+	test('# append year', () => {
+		expect(guessFormat('31st January, 2020')).toBe('Do MMMM, YYYY');
+	});
+
+	test('# full date', () => {
+		expect(guessFormat('Sunday, 31st January 2020')).toBe('dddd, Do MMMM YYYY');
 	});
 });

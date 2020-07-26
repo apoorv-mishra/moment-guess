@@ -29,7 +29,7 @@ npx moment-guess --help
 
 - *31/12/2020, 1.1.2020, 31-12-20*(slash, dot or dash delimited dates, both US and UK styles)
 
-- *January 1st, Jan 30, 01 Jan, 31st January*(month name and day of month combo)
+- *Fri, January 30th 2020*(dow, dd Mon yyyy with both short and long names)
 
 ## 🤷‍♀️ What happens in case of ambiguous input?
 If the input is ambiguous like 01/01/2020(could mean DD/MM/YYYY or MM/DD/YYYY), **it would display all possible matched formats**. Try `npx -q moment-guess -d '01/01/2020'`

@@ -15,14 +15,18 @@ const MonthNameAndDayOfMonthDateFormatParser = (function() {
 	// Parser name
 	Parser.name = 'MonthNameAndDayOfMonthDateFormatParser';
 
-	Parser.pattern = new RegExp(
-		'(?<month>Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|June?'
+	Parser.pattern = new RegExp('^'
+		+ '(?<dayOfWeek>(?:Sun?|Mon?|Tu(?:es)?|We(?:dnes)?|Th(?:urs)?|Fri?|Sa(?:tur)?)(?:day)?)?'
+		+ '(?<delim1>,)?'
+		+ '(?<delim2>\\s)?'
+		+ '(?<month>Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|June?'
 		+ '|'
 		+ 'July?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)'
-		+ '(?<delim1>\\s)'
+		+ '(?<delim3>\\s)'
 		+ '(?<dayOfMonth>(?:3[0-1]|[1-2]\\d|0?[1-9])(?:st|nd|rd|th)?)'
-		+ '(?<delim2>,)?'
-		+ '(?<delim3>\\s)?'
+		+ '(?<delim4>,)?'
+		+ '(?<delim5>\\s)?'
+		+ '(?<year>\\d{4}|\\d{2})?'
 	);
 
 	/**
