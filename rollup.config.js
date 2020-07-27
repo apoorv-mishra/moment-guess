@@ -1,7 +1,6 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
-import {terser} from 'rollup-plugin-terser';
 import pkg from './package.json';
 
 export default [{
@@ -11,13 +10,6 @@ export default [{
 			file: pkg.main,
 			format: 'umd',
 			name: 'MomentGuess',
-			sourcemap: true,
-		},
-		{
-			file: pkg.browser,
-			format: 'umd',
-			name: 'MomentGuess',
-			plugins: [ terser() ],
 			sourcemap: true,
 		},
 	],
