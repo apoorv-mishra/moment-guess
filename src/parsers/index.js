@@ -6,6 +6,8 @@ import UKStyleSlashDelimitedDateFormatParser from './UKStyleSlashDelimitedDateFo
 import USStyleSlashDelimitedDateFormatParser from './USStyleSlashDelimitedDateFormatParser';
 import MonthNameAndDayOfMonthDateFormatParser from './MonthNameAndDayOfMonthDateFormatParser';
 import DayOfMonthAndMonthNameDateFormatParser from './DayOfMonthAndMonthNameDateFormatParser';
+import TwentyFourHourTimeFormatParser from './TwentyFourHourTimeFormatParser';
+import TwelveHourTimeFormatParser from './TwelveHourTimeFormatParser';
 
 const parsers = [
 	ISO8601ExtendedDateTimeFormatParser,
@@ -16,6 +18,8 @@ const parsers = [
 	USStyleSlashDelimitedDateFormatParser,
 	MonthNameAndDayOfMonthDateFormatParser,
 	DayOfMonthAndMonthNameDateFormatParser,
+	TwentyFourHourTimeFormatParser,
+	TwelveHourTimeFormatParser,
 ];
 
 export default parsers;

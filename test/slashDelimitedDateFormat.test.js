@@ -150,8 +150,8 @@ describe('Slash, dot or dash delimited date formats', () => {
 	test('# MM, DD, YY in range [01, 12] dot delimited', () => {
 		const result = guessFormat('01.02.03');
 		expect(result).toBeInstanceOf(Array);
-		expect(result).toHaveLength(3);
-		expect(result).toEqual(expect.arrayContaining(['YY.MM.DD', 'MM.DD.YY', 'DD.MM.YY']));
+		expect(result).toHaveLength(4);
+		expect(result).toEqual(expect.arrayContaining(['YY.MM.DD', 'MM.DD.YY', 'DD.MM.YY', 'HH.mm.ss']));
 	});
 
 	test('# MM, DD, YY in range [01, 12] dash delimited', () => {
@@ -171,8 +171,8 @@ describe('Slash, dot or dash delimited date formats', () => {
 	test('# YY in range [13, 31] placed first, dot delimited', () => {
 		const result = guessFormat('13.02.01');
 		expect(result).toBeInstanceOf(Array);
-		expect(result).toHaveLength(2);
-		expect(result).toEqual(expect.arrayContaining(['YY.MM.DD', 'DD.MM.YY']));
+		expect(result).toHaveLength(3);
+		expect(result).toEqual(expect.arrayContaining(['YY.MM.DD', 'DD.MM.YY', 'HH.mm.ss']));
 	});
 
 	test('# DD/MM/YY', () => {
@@ -221,8 +221,8 @@ describe('Slash, dot or dash delimited date formats', () => {
 	test('# MM, DD in range[01, 12] short form, dot delimited', () => {
 		const result = guessFormat('01.01');
 		expect(result).toBeInstanceOf(Array);
-		expect(result).toHaveLength(3);
-		expect(result).toEqual(expect.arrayContaining(['YY.MM', 'DD.MM', 'MM.DD']));
+		expect(result).toHaveLength(4);
+		expect(result).toEqual(expect.arrayContaining(['YY.MM', 'DD.MM', 'MM.DD', 'HH.mm']));
 	});
 
 	test('# MM, DD in range[01, 12] short form, dash delimited', () => {
@@ -237,7 +237,11 @@ describe('Slash, dot or dash delimited date formats', () => {
 	});
 
 	test('# MM.DD', () => {
-		expect(guessFormat('12.31')).toBe('MM.DD');
+		const result = guessFormat('12.31');
+
+		expect(result).toBeInstanceOf(Array);
+		expect(result).toHaveLength(2);
+		expect(result).toEqual(expect.arrayContaining(['MM.DD', 'HH.mm']));
 	});
 
 	test('# MM-DD', () => {
