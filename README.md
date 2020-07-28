@@ -14,12 +14,14 @@
 
 > :tada: A utility package for guessing date's format :alarm_clock: :raised_hands:
 
-<img alt="Demo" src="https://imgur.com/nso1TQ4.gif" />
+<img alt="Demo" src="./demo.gif" />
 
 ## 👨‍💻 Usage
 ```sh
-npx moment-guess --help
+npx moment-guess --date 'Fri, January 30th 2020, 10:00 AM'
 ```
+For details, try `npx moment-guess --help`
+
 ## 🙌 Supported Formats
 - *2020-07-24T17:09:03+00:00*([IS0 8601](https://en.wikipedia.org/wiki/ISO_8601))
 
