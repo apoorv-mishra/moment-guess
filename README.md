@@ -17,6 +17,8 @@
 <img alt="Demo" src="./demo.gif" />
 
 ## 👨‍💻 Usage
+
+#### 📝 Note: The following commands DO NOT INSTALL the package system-wide, permanently. *npx* is just a [package runner](https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner).
 ```sh
 npx moment-guess --date 'Fri, January 30th 2020, 10:00 AM'
 ```
