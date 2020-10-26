@@ -1,5 +1,5 @@
 const TimeFormatRefiner = (function() {
-	const Refiner = {};
+	const Refiner: any = {};
 
 	// Refiner name
 	Refiner.name = 'TimeFormatRefiner';

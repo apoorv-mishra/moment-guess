@@ -1,17 +1,16 @@
-const YearFormatTokenAssigner = (function() {
-	const Assigner = {};
+const TwentyFourHourFormatTokenAssigner = (function() {
+	const Assigner: any = {};
 
 	// Assigner name
-	Assigner.name = 'YearFormatTokenAssigner';
+	Assigner.name = 'TwentyFourHourFormatTokenAssigner';
 
 	// Assigner type
-	Assigner.type= 'year';
+	Assigner.type= 'twentyFourHour';
 
 	// Regexp for matching the format token 
 	Assigner.map = new Map();
-	Assigner.map.set(/\d{2}/, 'YY');
-	Assigner.map.set(/\d{4}/, 'YYYY');
-	Assigner.map.set(/[+-]\d{6}/, 'YYYYYY');
+	Assigner.map.set(/^(\d|1\d|2[0-3])$/, 'H');
+	Assigner.map.set(/^([0-1]\d|2[0-3])$/, 'HH');
 
 	/**
 	 * Tests whether token type is same as
@@ -40,7 +39,6 @@ const YearFormatTokenAssigner = (function() {
 	};
 
 	return Assigner;
-})();
+})(); 
 
-
-export default YearFormatTokenAssigner;
+export default TwentyFourHourFormatTokenAssigner; 

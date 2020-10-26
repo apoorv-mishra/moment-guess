@@ -1,5 +1,5 @@
 const EscapeTextFormatTokenAssigner = (function() {
-	const Assigner = {};
+	const Assigner: any = {};
 
 	// Assigner name
 	Assigner.name = 'EscapeTextFormatTokenAssigner';

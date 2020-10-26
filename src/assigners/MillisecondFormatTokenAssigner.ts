@@ -1,16 +1,17 @@
-const TwelveHourFormatTokenAssigner = (function() {
-	const Assigner = {};
+const MillisecondFormatTokenAssigner = (function() {
+	const Assigner: any = {};
 
 	// Assigner name
-	Assigner.name = 'TwelveHourFormatTokenAssigner';
+	Assigner.name = 'MillisecondFormatTokenAssigner';
 
 	// Assigner type
-	Assigner.type= 'twelveHour';
+	Assigner.type= 'millisecond';
 
 	// Regexp for matching the format token 
 	Assigner.map = new Map();
-	Assigner.map.set(/^([1-9]|1[0-2])$/, 'h');
-	Assigner.map.set(/^(0\d|1[0-2])$/, 'hh');
+	Assigner.map.set(/\d/, 'S');
+	Assigner.map.set(/\d{2}/, 'SS');
+	Assigner.map.set(/\d{3}/, 'SSS');
 
 	/**
 	 * Tests whether token type is same as
@@ -41,4 +42,4 @@ const TwelveHourFormatTokenAssigner = (function() {
 	return Assigner;
 })(); 
 
-export default TwelveHourFormatTokenAssigner; 
+export default MillisecondFormatTokenAssigner;

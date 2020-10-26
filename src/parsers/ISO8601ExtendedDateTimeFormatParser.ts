@@ -6,7 +6,7 @@ const ISO8601ExtendedDateTimeFormatParser = (function() {
 	 * ISO 8601
 	 * https://en.wikipedia.org/wiki/ISO_8601
 	 */
-	const Parser = {};
+	const Parser: any = {};
 
 	// Parser name
 	Parser.name = 'ISO8601ExtendedDateTimeFormatParser';

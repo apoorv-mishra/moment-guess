@@ -1,31 +1,25 @@
 import Token from './Token.js';
 
-const USStyleSlashDelimitedDateFormatParser = (function() {
+const SlashDelimitedDateFormatParser = (function() {
 
 	/*
-	 * US style
-	 *
-	 * - MM/DD/YYYY
-	 * - M/D/YYYY
-	 *
-	 * - MM/DD/YY
-	 * - M/D/YY
-	 *
-	 * - MM/DD
-	 * - M/D
+	 * YYYY/MM/DD
+	 * YYYY/M/D
+	 * YYYY/MM
+	 * YYYY/M
 	 */
-	const Parser = {};
+	const Parser: any = {};
 
 	// Parser name
-	Parser.name = 'USStyleSlashDelimitedDateFormatParser';
+	Parser.name = 'SlashDelimitedDateFormatParser';
 
 	Parser.pattern = new RegExp('^'
-		+ '(?<month>0?[1-9]|1[0-2])'
+		+ '(?<year>\\d{4}|\\d{2})'
 		+ '(?<delim1>[/.-])'
-		+ '(?<dayOfMonth>0?[1-9]|[1-2]\\d|3[0-1])'
+		+ '(?<month>0?[1-9]|1[0-2])'
 		+ '(?:'
 			+ '(?<delim2>[/.-])'
-			+ '(?<year>\\d{4}|\\d{2})'
+			+ '(?<dayOfMonth>0?[1-9]|[1-2]\\d|3[0-1])'
 		+ ')?'
 		+ '$'
 	);
@@ -63,4 +57,4 @@ const USStyleSlashDelimitedDateFormatParser = (function() {
 })();
 
 
-export default USStyleSlashDelimitedDateFormatParser;
+export default SlashDelimitedDateFormatParser;

@@ -6,7 +6,7 @@ const RFC2822DateTimeFormatParser = (function() {
 	 * RFC 2822
 	 * https://tools.ietf.org/html/rfc2822#section-3.3
 	 */
-	const Parser = {};
+	const Parser: any = {};
 
 	// Parser name
 	Parser.name = 'RFC2822DateTimeFormatParser';

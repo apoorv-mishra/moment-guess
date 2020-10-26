@@ -1,19 +1,16 @@
-const MonthFormatTokenAssigner = (function() {
-	const Assigner = {};
+const MeridiemFormatTokenAssigner = (function() {
+	const Assigner: any = {};
 
 	// Assigner name
-	Assigner.name = 'MonthFormatTokenAssigner';
+	Assigner.name = 'MeridiemFormatTokenAssigner';
 
 	// Assigner type
-	Assigner.type= 'month';
+	Assigner.type= 'meridiem';
 
 	// Regexp for matching the format token 
 	Assigner.map = new Map();
-	Assigner.map.set(/\d{1,2}/, 'M');
-	Assigner.map.set(/\d{2}/, 'MM');
-	Assigner.map.set(/\d{1,2}(?:st|nd|rd|th)/, 'Mo');
-	Assigner.map.set(/^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)$/, 'MMM');
-	Assigner.map.set(/^(January|February|March|April|May|June|July|August|September|October|November|December)$/, 'MMMM');
+	Assigner.map.set(/am|pm/, 'a');
+	Assigner.map.set(/AM|PM/, 'A');
 
 	/**
 	 * Tests whether token type is same as
@@ -44,5 +41,5 @@ const MonthFormatTokenAssigner = (function() {
 	return Assigner;
 })();
 
-export default MonthFormatTokenAssigner; 
 
+export default MeridiemFormatTokenAssigner;

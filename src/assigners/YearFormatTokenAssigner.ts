@@ -1,16 +1,17 @@
-const MinuteFormatTokenAssigner = (function () {
-	const Assigner = {};
+const YearFormatTokenAssigner = (function() {
+	const Assigner: any = {};
 
 	// Assigner name
-	Assigner.name = 'MinuteFormatTokenAssigner';
+	Assigner.name = 'YearFormatTokenAssigner';
 
 	// Assigner type
-	Assigner.type= 'minute';
+	Assigner.type= 'year';
 
 	// Regexp for matching the format token 
 	Assigner.map = new Map();
-	Assigner.map.set(/\d{1,2}/, 'm');
-	Assigner.map.set(/\d{2}/, 'mm');
+	Assigner.map.set(/\d{2}/, 'YY');
+	Assigner.map.set(/\d{4}/, 'YYYY');
+	Assigner.map.set(/[+-]\d{6}/, 'YYYYYY');
 
 	/**
 	 * Tests whether token type is same as
@@ -39,6 +40,7 @@ const MinuteFormatTokenAssigner = (function () {
 	};
 
 	return Assigner;
-})(); 
+})();
 
-export default MinuteFormatTokenAssigner;
+
+export default YearFormatTokenAssigner;

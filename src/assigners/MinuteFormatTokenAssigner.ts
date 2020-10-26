@@ -1,16 +1,16 @@
-const TwentyFourHourFormatTokenAssigner = (function() {
-	const Assigner = {};
+const MinuteFormatTokenAssigner = (function () {
+	const Assigner: any = {};
 
 	// Assigner name
-	Assigner.name = 'TwentyFourHourFormatTokenAssigner';
+	Assigner.name = 'MinuteFormatTokenAssigner';
 
 	// Assigner type
-	Assigner.type= 'twentyFourHour';
+	Assigner.type= 'minute';
 
 	// Regexp for matching the format token 
 	Assigner.map = new Map();
-	Assigner.map.set(/^(\d|1\d|2[0-3])$/, 'H');
-	Assigner.map.set(/^([0-1]\d|2[0-3])$/, 'HH');
+	Assigner.map.set(/\d{1,2}/, 'm');
+	Assigner.map.set(/\d{2}/, 'mm');
 
 	/**
 	 * Tests whether token type is same as
@@ -41,4 +41,4 @@ const TwentyFourHourFormatTokenAssigner = (function() {
 	return Assigner;
 })(); 
 
-export default TwentyFourHourFormatTokenAssigner; 
+export default MinuteFormatTokenAssigner;

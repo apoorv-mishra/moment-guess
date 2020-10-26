@@ -1,5 +1,5 @@
 const DayOfMonthFormatTokenAssigner = (function() {
-	const Assigner = {};
+	const Assigner: any = {};
 
 	// Assigner name
 	Assigner.name = 'DayOfMonthFormatTokenAssigner';

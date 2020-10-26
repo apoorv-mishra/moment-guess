@@ -5,7 +5,7 @@ import ts from "@wessberg/rollup-plugin-ts";
 import pkg from './package.json';
 
 export default [{
-	input: './src/index.js',
+	input: './src/index.ts',
 	output: [
 		{
 			file: 'dist/bundle.js',
@@ -19,7 +19,7 @@ export default [{
 		ts({ tsconfig: 'tsconfig.json' }),
 	],
 },{
-	input: './cli/index.js',
+	input: './cli/index.ts',
 	output: [
 		{
 			file: pkg.bin['moment-guess'],

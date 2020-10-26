@@ -1,16 +1,17 @@
-const SecondFormatTokenAssigner = (function() {
-	const Assigner = {};
+const DayOfYearFormatTokenAssigner = (function() {
+	const Assigner: any = {};
 
 	// Assigner name
-	Assigner.name = 'SecondFormatTokenAssigner';
+	Assigner.name = 'DayOfYearFormatTokenAssigner';
 
 	// Assigner type
-	Assigner.type= 'second';
+	Assigner.type= 'dayOfYear';
 
 	// Regexp for matching the format token 
 	Assigner.map = new Map();
-	Assigner.map.set(/\d{1,2}/, 's');
-	Assigner.map.set(/\d{2}/, 'ss');
+	Assigner.map.set(/\d{1,3}/, 'DDD');
+	Assigner.map.set(/\d{3}/, 'DDDD');
+	Assigner.map.set(/\d{1,3}(?:st|nd|rd|th)/, 'DDDo');
 
 	/**
 	 * Tests whether token type is same as
@@ -41,4 +42,5 @@ const SecondFormatTokenAssigner = (function() {
 	return Assigner;
 })(); 
 
-export default SecondFormatTokenAssigner;
+
+export default DayOfYearFormatTokenAssigner; 

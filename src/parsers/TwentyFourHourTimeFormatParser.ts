@@ -1,25 +1,32 @@
 import Token from './Token.js';
 
-const SlashDelimitedDateFormatParser = (function() {
+const TwentyFourHourTimeFormatParser = (function() {
 
-	/*
-	 * YYYY/MM/DD
-	 * YYYY/M/D
-	 * YYYY/MM
-	 * YYYY/M
+	/**
+	 * HH:mm:ss[.ddd]
+	 * HH:mm
+	 * HH.mm.ss Z
 	 */
-	const Parser = {};
+	const Parser: any = {};
 
 	// Parser name
-	Parser.name = 'SlashDelimitedDateFormatParser';
+	Parser.name = 'TwentyFourHourTimeFormatParser';
 
 	Parser.pattern = new RegExp('^'
-		+ '(?<year>\\d{4}|\\d{2})'
-		+ '(?<delim1>[/.-])'
-		+ '(?<month>0?[1-9]|1[0-2])'
+		+ '(?<twentyFourHour>2[0-3]|[0-1]\\d)'
+		+ '(?<delim1>[:.])'
+		+ '(?<minute>[0-5]\\d)'
 		+ '(?:'
-			+ '(?<delim2>[/.-])'
-			+ '(?<dayOfMonth>0?[1-9]|[1-2]\\d|3[0-1])'
+			+ '(?<delim2>[:.])'
+			+ '(?<second>[0-5]\\d)'
+		+ ')?'
+		+ '(?:'
+			+ '(?<delim3>.)'
+			+ '(?<millisecond>\\d{3})'
+		+ ')?'
+		+ '(?:'
+			+ '(?<delim4>\\s)'
+			+ '(?<timezone>[+-]\\d{2}(?::?\\d{2})?|Z)'
 		+ ')?'
 		+ '$'
 	);
@@ -57,4 +64,4 @@ const SlashDelimitedDateFormatParser = (function() {
 })();
 
 
-export default SlashDelimitedDateFormatParser;
+export default TwentyFourHourTimeFormatParser; 

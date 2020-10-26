@@ -1,5 +1,5 @@
 const DelimiterFormatTokenAssigner = (function() {
-	const Assigner = {};
+	const Assigner: any = {};
 
 	// Assigner name
 	Assigner.name = 'DelimiterFormatTokenAssigner';

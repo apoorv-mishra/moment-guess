@@ -1,5 +1,5 @@
 const ISOWeekOfYearFormatTokenAssigner = (function() {
-	const Assigner = {};
+	const Assigner: any = {};
 
 	// Assigner name
 	Assigner.name = 'ISOWeekOfYearFormatTokenAssigner';

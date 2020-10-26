@@ -1,17 +1,20 @@
-const DayOfYearFormatTokenAssigner = (function() {
-	const Assigner = {};
+const TimezoneFormatTokenAssigner = (function() {
+	const Assigner: any = {};
 
 	// Assigner name
-	Assigner.name = 'DayOfYearFormatTokenAssigner';
+	Assigner.name = 'TimezoneFormatTokenAssigner';
 
 	// Assigner type
-	Assigner.type= 'dayOfYear';
+	Assigner.type= 'timezone';
 
 	// Regexp for matching the format token 
 	Assigner.map = new Map();
-	Assigner.map.set(/\d{1,3}/, 'DDD');
-	Assigner.map.set(/\d{3}/, 'DDDD');
-	Assigner.map.set(/\d{1,3}(?:st|nd|rd|th)/, 'DDDo');
+	Assigner.map.set(/[+-]\d{2}(?::\d{2})?/, 'Z');
+	Assigner.map.set(/[+-]\d{4}/, 'ZZ');
+	Assigner.map.set(/Z/, 'Z');
+
+	// Specifically for timezone in RFC 2822 compliant dates
+	Assigner.map.set(/\s(?:(?:UT|GMT|[ECMP][SD]T)|[Zz]|[+-]\d{4})/, ' ZZ');
 
 	/**
 	 * Tests whether token type is same as
@@ -42,5 +45,4 @@ const DayOfYearFormatTokenAssigner = (function() {
 	return Assigner;
 })(); 
 
-
-export default DayOfYearFormatTokenAssigner; 
+export default TimezoneFormatTokenAssigner;

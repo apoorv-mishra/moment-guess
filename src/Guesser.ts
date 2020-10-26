@@ -3,6 +3,13 @@ import refiners from './refiners';
 import assigners from './assigners';
 
 export default class Guesser {
+
+	input: any;
+	options: any;
+	parsers: any;
+	refiners: any;
+	assigners: any;
+
 	/**
 	 * Constructor.
 	 */

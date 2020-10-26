@@ -1,29 +1,27 @@
 import Token from './Token.js';
 
-const ISO8601BasicDateTimeFormatParser = (function() {
+const UKStyleSlashDelimitedDateFormatParser = (function() {
 
-	/**
-	 * ISO 8601
-	 * https://en.wikipedia.org/wiki/ISO_8601
+	/*
+	 * UK style
+	 *
+	 * - DD/MM/YYYY
+	 * - D/M/YYYY
+	 * - DD/MM/YY
+	 * - DD/MM
 	 */
-	const Parser = {};
+	const Parser: any = {};
 
 	// Parser name
-	Parser.name = 'ISO8601BasicDateTimeFormatParser';
+	Parser.name = 'UKStyleSlashDelimitedDateFormatParser';
 
 	Parser.pattern = new RegExp('^'
-		+ '(?<year>[+-]\\d{6}|\\d{4})'
+		+ '(?<dayOfMonth>0?[1-9]|[1-2]\\d|3[0-1])'
+		+ '(?<delim1>[/.-])'
+		+ '(?<month>0?[1-9]|1[0-2])'
 		+ '(?:'
-			+ '(?<month>\\d{2})(?:(?<dayOfMonth>\\d{2}))?'
-			+ '|'
-			+ '(?<escapeText>W)(?<isoWeekOfYear>\\d{2})(?:(?<isoDayOfWeek>\\d))?'
-			+ '|'
-			+ '(?<dayOfYear>\\d{3})'
-		+ ')?'
-		+ '(?:'
-			+ '(?<delim1>T| )'
-			+ '(?:(?<twentyFourHour>\\d{2})(?:(?<minute>\\d{2})(?:(?<second>\\d{2})(?:(?<delim2>[.,])(?<millisecond>\\d{1,9}))?)?)?)'
-			+ '(?<timezone>[+-]\\d{2}(?::?\\d{2})?|Z)?'
+			+ '(?<delim2>[/.-])'
+			+ '(?<year>\\d{4}|\\d{2})'
 		+ ')?'
 		+ '$'
 	);
@@ -61,4 +59,4 @@ const ISO8601BasicDateTimeFormatParser = (function() {
 })();
 
 
-export default ISO8601BasicDateTimeFormatParser; 
+export default UKStyleSlashDelimitedDateFormatParser;

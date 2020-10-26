@@ -1,5 +1,5 @@
 const StandardFormatParsersRefiner = (function() {
-	const Refiner = {};
+	const Refiner: any = {};
 
 	// Refiner name
 	Refiner.name = 'StandardFormatParsersRefiner';

@@ -1,62 +1,60 @@
 import Token from './Token.js';
 
-const MonthNameAndDayOfMonthDateFormatParser = (function() {
+const DayOfMonthAndMonthNameDateFormatParser = (function() {
 
 	/**
 	 * Date only
 	 *
-	 * - Jan 1
-	 * - January 1
-	 * - Jan 1st
-	 * - January 1st
-	 * - Jan 01
-	 * - January 01
+	 * - 1 Jan
+	 * - 1 January 
+	 * - 1st Jan 
+	 * - 1st January 
+	 * - 01 Jan 
+	 * - 01 January
 	 *
 	 * Date with time
 	 *
-	 * - Jan 1, 10:00 AM
-	 * - Sunday, January 1st, 23:00
+	 * - 1 Jan, 10:00 AM
+	 * - Sunday, 1st January, 23:00
 	 */
-	const Parser = {};
+	const Parser: any = {};
 
 	// Parser name
-	Parser.name = 'MonthNameAndDayOfMonthDateFormatParser';
+	Parser.name = 'DayOfMonthAndMonthNameDateFormatParser';
 
 	Parser.pattern = new RegExp('^'
 		+ '(?<dayOfWeek>(?:Sun?|Mon?|Tu(?:es)?|We(?:dnes)?|Th(?:urs)?|Fri?|Sa(?:tur)?)(?:day)?)?'
 		+ '(?<delim1>,)?'
 		+ '(?<delim2>\\s)?'
+		+ '(?<dayOfMonth>(?:3[0-1]|[1-2]\\d|0?[1-9])(?:st|nd|rd|th)?)'
+		+ '(?<delim3>\\s)'
 		+ '(?<month>Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|June?'
 		+ '|'
 		+ 'July?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)'
-		+ '(?<delim3>\\s)'
-		+ '(?<dayOfMonth>(?:3[0-1]|[1-2]\\d|0?[1-9])(?:st|nd|rd|th)?)'
 		+ '(?<delim4>,)?'
 		+ '(?<delim5>\\s)?'
 		+ '(?<year>\\d{4}|\\d{2})?'
 		+ '(?:'
+			+ '(?<delim6>,)?'
+			+ '(?<delim7>\\s)'
+			+ '(?:(?<twentyFourHour>2[0-3]|[0-1]\\d)|(?<twelveHour>0\\d|1[0-2]))'
 			+ '(?:'
-				+ '(?<delim6>,)?'
-				+ '(?<delim7>\\s)'
-				+ '(?:(?<twentyFourHour>2[0-3]|[0-1]\\d)|(?<twelveHour>0\\d|1[0-2]))'
-				+ '(?:'
-					+ '(?<delim8>[:.])'
-					+ '(?<minute>[0-5]\\d)'
-				+ ')?'
-				+ '(?:'
-					+ '(?<delim9>[:.])'
-					+ '(?<second>[0-5]\\d)'
-				+ ')?'
-				+ '(?:'
-					+ '(?<delim10>.)'
-					+ '(?<millisecond>\\d{3})'
-				+ ')?'
-				+ '(?<delim11>\\s)?'
-				+ '(?<meridiem>am|pm|AM|PM)?'
-				+ '(?:'
-					+ '(?<delim12>\\s)'
-					+ '(?<timezone>[+-]\\d{2}(?::?\\d{2})?|Z)'
-				+ ')?'
+				+ '(?<delim8>[:.])'
+				+ '(?<minute>[0-5]\\d)'
+			+ ')?'
+			+ '(?:'
+				+ '(?<delim9>[:.])'
+				+ '(?<second>[0-5]\\d)'
+			+ ')?'
+			+ '(?:'
+				+ '(?<delim10>.)'
+				+ '(?<millisecond>\\d{3})'
+			+ ')?'
+			+ '(?<delim11>\\s)?'
+			+ '(?<meridiem>am|pm|AM|PM)?'
+			+ '(?:'
+				+ '(?<delim12>\\s)'
+				+ '(?<timezone>[+-]\\d{2}(?::?\\d{2})?|Z)'
 			+ ')?'
 		+ ')?'
 		+ '$'
@@ -95,4 +93,4 @@ const MonthNameAndDayOfMonthDateFormatParser = (function() {
 })();
 
 
-export default MonthNameAndDayOfMonthDateFormatParser; 
+export default DayOfMonthAndMonthNameDateFormatParser; 

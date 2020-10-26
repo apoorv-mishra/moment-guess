@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import arg from 'arg';
 
 import guessFormat from '../src/index.js';
-import pkg from '../package';
+import pkg from '../package.json';
 
 const warning = (message) => chalk`{yellow WARNING:} ${message}`;
 const info = (message) => chalk`{magenta INFO:} ${message}`;

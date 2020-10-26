@@ -1,16 +1,19 @@
-const MeridiemFormatTokenAssigner = (function() {
-	const Assigner = {};
+const DayOfWeekFormatTokenAssigner = (function() {
+	const Assigner: any = {};
 
 	// Assigner name
-	Assigner.name = 'MeridiemFormatTokenAssigner';
+	Assigner.name = 'DayOfWeekFormatTokenAssigner';
 
 	// Assigner type
-	Assigner.type= 'meridiem';
+	Assigner.type= 'dayOfWeek';
 
-	// Regexp for matching the format token 
+	// Regexp for ma tching the format token 
 	Assigner.map = new Map();
-	Assigner.map.set(/am|pm/, 'a');
-	Assigner.map.set(/AM|PM/, 'A');
+	Assigner.map.set(/[0-6]/, 'd');
+	Assigner.map.set(/[0-6](?:st|nd|rd|th)/, 'do');
+	Assigner.map.set(/(?:Su|Mo|Tu|We|Th|Fr|Sa)/, 'dd');
+	Assigner.map.set(/(?:Sun|Mon|Tue|Wed|Thu|Fri|Sat)/, 'ddd');
+	Assigner.map.set(/(?:Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday)/, 'dddd');
 
 	/**
 	 * Tests whether token type is same as
@@ -39,7 +42,6 @@ const MeridiemFormatTokenAssigner = (function() {
 	};
 
 	return Assigner;
-})();
+})(); 
 
-
-export default MeridiemFormatTokenAssigner;
+export default DayOfWeekFormatTokenAssigner; 

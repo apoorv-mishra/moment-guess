@@ -1,19 +1,16 @@
-const DayOfWeekFormatTokenAssigner = (function() {
-	const Assigner = {};
+const SecondFormatTokenAssigner = (function() {
+	const Assigner: any = {};
 
 	// Assigner name
-	Assigner.name = 'DayOfWeekFormatTokenAssigner';
+	Assigner.name = 'SecondFormatTokenAssigner';
 
 	// Assigner type
-	Assigner.type= 'dayOfWeek';
+	Assigner.type= 'second';
 
-	// Regexp for ma tching the format token 
+	// Regexp for matching the format token 
 	Assigner.map = new Map();
-	Assigner.map.set(/[0-6]/, 'd');
-	Assigner.map.set(/[0-6](?:st|nd|rd|th)/, 'do');
-	Assigner.map.set(/(?:Su|Mo|Tu|We|Th|Fr|Sa)/, 'dd');
-	Assigner.map.set(/(?:Sun|Mon|Tue|Wed|Thu|Fri|Sat)/, 'ddd');
-	Assigner.map.set(/(?:Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday)/, 'dddd');
+	Assigner.map.set(/\d{1,2}/, 's');
+	Assigner.map.set(/\d{2}/, 'ss');
 
 	/**
 	 * Tests whether token type is same as
@@ -44,4 +41,4 @@ const DayOfWeekFormatTokenAssigner = (function() {
 	return Assigner;
 })(); 
 
-export default DayOfWeekFormatTokenAssigner; 
+export default SecondFormatTokenAssigner;

@@ -1,21 +1,22 @@
 import Token from './Token.js';
 
-const TwentyFourHourTimeFormatParser = (function() {
+const TwelveHourTimeFormatParser = (function() {
 
 	/**
-	 * HH:mm:ss[.ddd]
-	 * HH:mm
-	 * HH.mm.ss Z
+	 * hh:mm[AP]M
+	 * hh[AP]M
 	 */
-	const Parser = {};
+	const Parser: any = {};
 
 	// Parser name
-	Parser.name = 'TwentyFourHourTimeFormatParser';
+	Parser.name = 'TwelveHourTimeFormatParser';
 
 	Parser.pattern = new RegExp('^'
-		+ '(?<twentyFourHour>2[0-3]|[0-1]\\d)'
-		+ '(?<delim1>[:.])'
-		+ '(?<minute>[0-5]\\d)'
+		+ '(?<twelveHour>0\\d|1[0-2])'
+		+ '(?:'
+			+ '(?<delim1>[:.])'
+			+ '(?<minute>[0-5]\\d)'
+		+ ')?'
 		+ '(?:'
 			+ '(?<delim2>[:.])'
 			+ '(?<second>[0-5]\\d)'
@@ -24,8 +25,10 @@ const TwentyFourHourTimeFormatParser = (function() {
 			+ '(?<delim3>.)'
 			+ '(?<millisecond>\\d{3})'
 		+ ')?'
+		+ '(?<delim4>\\s)?'
+		+ '(?<meridiem>am|pm|AM|PM)'
 		+ '(?:'
-			+ '(?<delim4>\\s)'
+			+ '(?<delim5>\\s)'
 			+ '(?<timezone>[+-]\\d{2}(?::?\\d{2})?|Z)'
 		+ ')?'
 		+ '$'
@@ -64,4 +67,4 @@ const TwentyFourHourTimeFormatParser = (function() {
 })();
 
 
-export default TwentyFourHourTimeFormatParser; 
+export default TwelveHourTimeFormatParser; 

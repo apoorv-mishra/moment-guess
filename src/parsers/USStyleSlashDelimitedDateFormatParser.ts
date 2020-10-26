@@ -1,35 +1,31 @@
 import Token from './Token.js';
 
-const TwelveHourTimeFormatParser = (function() {
+const USStyleSlashDelimitedDateFormatParser = (function() {
 
-	/**
-	 * hh:mm[AP]M
-	 * hh[AP]M
+	/*
+	 * US style
+	 *
+	 * - MM/DD/YYYY
+	 * - M/D/YYYY
+	 *
+	 * - MM/DD/YY
+	 * - M/D/YY
+	 *
+	 * - MM/DD
+	 * - M/D
 	 */
-	const Parser = {};
+	const Parser: any = {};
 
 	// Parser name
-	Parser.name = 'TwelveHourTimeFormatParser';
+	Parser.name = 'USStyleSlashDelimitedDateFormatParser';
 
 	Parser.pattern = new RegExp('^'
-		+ '(?<twelveHour>0\\d|1[0-2])'
+		+ '(?<month>0?[1-9]|1[0-2])'
+		+ '(?<delim1>[/.-])'
+		+ '(?<dayOfMonth>0?[1-9]|[1-2]\\d|3[0-1])'
 		+ '(?:'
-			+ '(?<delim1>[:.])'
-			+ '(?<minute>[0-5]\\d)'
-		+ ')?'
-		+ '(?:'
-			+ '(?<delim2>[:.])'
-			+ '(?<second>[0-5]\\d)'
-		+ ')?'
-		+ '(?:'
-			+ '(?<delim3>.)'
-			+ '(?<millisecond>\\d{3})'
-		+ ')?'
-		+ '(?<delim4>\\s)?'
-		+ '(?<meridiem>am|pm|AM|PM)'
-		+ '(?:'
-			+ '(?<delim5>\\s)'
-			+ '(?<timezone>[+-]\\d{2}(?::?\\d{2})?|Z)'
+			+ '(?<delim2>[/.-])'
+			+ '(?<year>\\d{4}|\\d{2})'
 		+ ')?'
 		+ '$'
 	);
@@ -67,4 +63,4 @@ const TwelveHourTimeFormatParser = (function() {
 })();
 
 
-export default TwelveHourTimeFormatParser; 
+export default USStyleSlashDelimitedDateFormatParser;
