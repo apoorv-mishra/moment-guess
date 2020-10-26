@@ -1,8 +1,8 @@
 import chalk from 'chalk';
 import arg from 'arg';
 
-import guessFormat from './index.js';
-import pkg from './package';
+import guessFormat from '../src/index.js';
+import pkg from '../package';
 
 const warning = (message) => chalk`{yellow WARNING:} ${message}`;
 const info = (message) => chalk`{magenta INFO:} ${message}`;
@@ -14,9 +14,9 @@ const showHelp = () => console.log(
 
 	{bold USAGE}
 
-	{bold $} {cyan moment-guess} --date {yellow 2020-10-10}
-	{bold $} {cyan moment-guess} --version
-	{bold $} {cyan moment-guess} --help
+	{bold $} {cyan npx moment-guess} --date {yellow 2020-10-10}
+	{bold $} {cyan npx moment-guess} --version
+	{bold $} {cyan npx moment-guess} --help
 
 	{bold OPTIONS}
 
@@ -27,13 +27,14 @@ const showHelp = () => console.log(
 	-d, --date                          Displays the provided date's format
 	`
 );
+
 const showUsage = () => console.log(
 	chalk`
 	{bold USAGE}
 
-	{bold $} {cyan moment-guess} --date {yellow 2020-10-10}
-	{bold $} {cyan moment-guess} --version
-	{bold $} {cyan moment-guess} --help
+	{bold $} {cyan npx moment-guess} --date {yellow 2020-10-10}
+	{bold $} {cyan npx moment-guess} --version
+	{bold $} {cyan npx moment-guess} --help
 	`
 );
 
