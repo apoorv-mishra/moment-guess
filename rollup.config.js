@@ -1,23 +1,25 @@
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
+import ts from "@wessberg/rollup-plugin-ts";
 import pkg from './package.json';
 
 export default [{
-	input: 'index.js',
+	input: './src/index.ts',
 	output: [
 		{
-			file: pkg.main,
-			format: 'umd',
+			file: 'dist/bundle.js',
+			format: 'cjs',
 			name: 'MomentGuess',
 			sourcemap: true,
 		},
 	],
 	plugins: [
 		resolve(),
+		ts({ tsconfig: 'tsconfig.json' }),
 	],
 },{
-	input: 'cli.js',
+	input: './cmd/index.ts',
 	output: [
 		{
 			file: pkg.bin['moment-guess'],
@@ -30,5 +32,6 @@ export default [{
 		resolve(),
 		commonjs(),
 		json(),
+		ts({ tsconfig: 'tsconfig.json' }),
 	],
 }];
