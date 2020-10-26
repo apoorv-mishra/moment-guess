@@ -19,7 +19,7 @@ export default [{
 		ts({ tsconfig: 'tsconfig.json' }),
 	],
 },{
-	input: './cli/index.ts',
+	input: './cmd/index.ts',
 	output: [
 		{
 			file: pkg.bin['moment-guess'],

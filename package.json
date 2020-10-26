@@ -11,7 +11,7 @@
     "url": "https://github.com/apoorv-mishra/moment-guess/issues"
   },
   "bin": {
-    "moment-guess": "bin/bundle.cli.js"
+    "moment-guess": "bin/bundle.cmd.js"
   },
   "scripts": {
     "test": "jest",
