@@ -1,6 +1,6 @@
 import arg from 'arg';
 
-import guessFormat from '../src/index.js';
+import guessFormat from '../src/';
 import {
 	info,
 	error,

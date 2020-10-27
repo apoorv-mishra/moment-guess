@@ -1,5 +1,5 @@
-import StandardFormatParsersRefiner from './StandardFormatParsersRefiner.js';
-import TimeFormatRefiner from './TimeFormatRefiner.js';
+import StandardFormatParsersRefiner from './StandardFormatParsersRefiner';
+import TimeFormatRefiner from './TimeFormatRefiner';
 
 const refiners = [
 	StandardFormatParsersRefiner,

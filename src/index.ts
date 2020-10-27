@@ -1,4 +1,4 @@
-import Guesser from './Guesser.js';
+import Guesser from './Guesser';
 
 export default function guessFormat(date, options = {}) {
 	const guesser = new Guesser(date, options);
