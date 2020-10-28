@@ -1,7 +1,11 @@
 import Guesser from './Guesser';
+import {
+	Date,
+	Format,
+} from './types';
 
-export default function guessFormat(date, options = {}) {
-	const guesser = new Guesser(date, options);
+export default function guessFormat(date: Date): Array<Format> | Format {
+	const guesser = new Guesser(date);
 	const parsedResults = guesser.parseInput();
 	const refinedParsedResults = guesser.refineParsedResults(parsedResults);
 	if (refinedParsedResults.length === 0) {

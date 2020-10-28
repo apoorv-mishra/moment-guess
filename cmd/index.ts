@@ -12,7 +12,6 @@ import {
 
 (function() {
 	let args = null;
-	let config = {};
 	let date;
 
 	try {
@@ -42,14 +41,14 @@ import {
 			return showUsage();
 		}
 
-		const res = guessFormat(date, config);
+		const res = guessFormat(date);
 
 		if (res instanceof Array) {
 			info('Multiple formats matched!\n');
 			return res.forEach(f => display(f));
 		}
 
-		display(guessFormat(date, config));
+		display(res);
 
 	} catch (err) {
 		error(err.message);

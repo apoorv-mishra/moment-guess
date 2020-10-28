@@ -5,7 +5,6 @@ import assigners from './assigners';
 export default class Guesser {
 
 	input: any;
-	options: any;
 	parsers: any;
 	refiners: any;
 	assigners: any;
@@ -13,9 +12,8 @@ export default class Guesser {
 	/**
 	 * Constructor.
 	 */
-	constructor(input, options) {
+	constructor(input) {
 		this.input = input;
-		this.options = options;
 		this.parsers = parsers;
 		this.refiners = refiners;
 		this.assigners = assigners;
