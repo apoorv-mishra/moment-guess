@@ -1,36 +1,22 @@
 import parsers from './parsers';
 import refiners from './refiners';
 import assigners from './assigners';
+import Token from './parsers/Token';
+
+import {
+	Date,
+	Format,
+	ParsedResult,
+} from './types';
 
 export default class Guesser {
 
-	input: any;
-	parsers: any;
-	refiners: any;
-	assigners: any;
+	constructor() {}
 
-	/**
-	 * Constructor.
-	 */
-	constructor(input) {
-		this.input = input;
-		this.parsers = parsers;
-		this.refiners = refiners;
-		this.assigners = assigners;
-	}
-
-	/**
-	 * Parses the input string
-	 * using different parsers
-	 * to find matches.
-	 *
-	 * @returns parsedResults(Array of objects)
-	 */
-	parseInput() {
-		const input = this.input;
-		const parsedResults = [];
-		this.parsers.forEach(parser => {
-			const parsedResult = parser.parse(input);
+	static parse(date: Date): Array<ParsedResult> {
+		const parsedResults: Array<ParsedResult> = [];
+		parsers.forEach(parser => {
+			const parsedResult = parser.parse(date);
 			if (parsedResult) {
 				parsedResults.push({...parsedResult});
 			}
@@ -38,51 +24,26 @@ export default class Guesser {
 		return parsedResults;
 	}
 
-	/**
-	 * Refines results if multiple
-	 * parsers were able to parse
-	 * the input.
-	 *
-	 * @params parsedResults(Object)
-	 *
-	 * @returns tokens(Array of Objects)
-	 */
-	refineParsedResults(parsedResults) {
-		let refinedParsedResults = [...parsedResults];
-		this.refiners.forEach(refiner => {
+	static refine(parsedResults: Array<ParsedResult>): Array<ParsedResult> {
+		let refinedParsedResults: Array<ParsedResult> = [...parsedResults];
+		refiners.forEach(refiner => {
 			refinedParsedResults = [
 				...refiner.refine(refinedParsedResults)
 			];
 		});
-
 		return refinedParsedResults;
 	}
 
-	/**
-	 * Assigns corresponding format
-	 * tokens to individual input tokens
-	 * parsed.
-	 *
-	 * Details are at https://momentjs.com/docs/#/displaying/
-	 *
-	 * @params tokens(Array of Objects)
-	 */
-	assignFormatTokens(tokens) {
-		this.assigners.forEach(assigner => {
+	static assign(tokens: Array<Token>): void {
+		assigners.forEach(assigner => {
 			tokens.forEach(token => {
 				assigner.assign(token);
 			});
 		});
 	}
 
-	/**
-	 * Gets the expected format
-	 * string for the giving input.
-	 *
-	 * @returns String
-	 */
-	getFormatString(tokens) {
-		let formatString = '';
+	static getFormatString(tokens: Array<Token>): Format {
+		let formatString: Format = '';
 		tokens.forEach(token => {
 			formatString += token.getFormat() ? token.getFormat() : token.getValue();
 		});
