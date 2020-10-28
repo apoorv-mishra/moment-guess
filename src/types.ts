@@ -8,3 +8,9 @@ export interface ParsedResult {
 	index: number;
 	parser: string;
 }
+
+export interface IParser {
+	readonly name: string;
+	readonly pattern: RegExp;
+	parse(date: Date): ParsedResult | undefined;
+}
