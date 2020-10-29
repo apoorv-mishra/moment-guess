@@ -15,7 +15,7 @@ import Parser from './Parser';
  * - 1 Jan, 10:00 AM
  * - Sunday, 1st January, 23:00
  */
-const DayOfMonthAndMonthNameDateFormatParser = new Parser(
+const dayOfMonthAndMonthNameDateFormatParser = new Parser(
 	'DayOfMonthAndMonthNameDateFormatParser',
 	new RegExp('^'
 		+ '(?<dayOfWeek>(?:Sun?|Mon?|Tu(?:es)?|We(?:dnes)?|Th(?:urs)?|Fri?|Sa(?:tur)?)(?:day)?)?'
@@ -60,7 +60,7 @@ const DayOfMonthAndMonthNameDateFormatParser = new Parser(
  * ISO 8601
  * https://en.wikipedia.org/wiki/ISO_8601
  */
-const ISO8601BasicDateTimeFormatParser = new Parser(
+const iSO8601BasicDateTimeFormatParser = new Parser(
 	'ISO8601BasicDateTimeFormatParser',
 	new RegExp('^'
 		+ '(?<year>[+-]\\d{6}|\\d{4})'
@@ -84,7 +84,7 @@ const ISO8601BasicDateTimeFormatParser = new Parser(
  * ISO 8601
  * https://en.wikipedia.org/wiki/ISO_8601
  */
-const ISO8601ExtendedDateTimeFormatParser = new Parser(
+const iSO8601ExtendedDateTimeFormatParser = new Parser(
 	'ISO8601ExtendedDateTimeFormatParser',
 	new RegExp('^'
 		+ '(?<year>[+-]\\d{6}|\\d{4})'
@@ -120,7 +120,7 @@ const ISO8601ExtendedDateTimeFormatParser = new Parser(
  * - Jan 1, 10:00 AM
  * - Sunday, January 1st, 23:00
  */
-const MonthNameAndDayOfMonthDateFormatParser = new Parser(
+const monthNameAndDayOfMonthDateFormatParser = new Parser(
 	'MonthNameAndDayOfMonthDateFormatParser',
 	new RegExp('^'
 		+ '(?<dayOfWeek>(?:Sun?|Mon?|Tu(?:es)?|We(?:dnes)?|Th(?:urs)?|Fri?|Sa(?:tur)?)(?:day)?)?'
@@ -167,7 +167,7 @@ const MonthNameAndDayOfMonthDateFormatParser = new Parser(
  * RFC 2822
  * https://tools.ietf.org/html/rfc2822#section-3.3
  */
-const RFC2822DateTimeFormatParser = new Parser(
+const rFC2822DateTimeFormatParser = new Parser(
 	'RFC2822DateTimeFormatParser',
 	new RegExp('^'
 		+ '(?:(?<dayOfWeek>Mon|Tue|Wed|Thu|Fri|Sat|Sun)(?<delim1>,)?(?<delim2>\\s))?'
@@ -189,7 +189,7 @@ const RFC2822DateTimeFormatParser = new Parser(
  * YYYY/MM
  * YYYY/M
  */
-const SlashDelimitedDateFormatParser = new Parser(
+const slashDelimitedDateFormatParser = new Parser(
 	'SlashDelimitedDateFormatParser',
 	new RegExp('^'
 		+ '(?<year>\\d{4}|\\d{2})'
@@ -207,7 +207,7 @@ const SlashDelimitedDateFormatParser = new Parser(
  * hh:mm[AP]M
  * hh[AP]M
  */
-const TwelveHourTimeFormatParser = new Parser(
+const twelveHourTimeFormatParser = new Parser(
 	'TwelveHourTimeFormatParser',
 	new RegExp('^'
 		+ '(?<twelveHour>0\\d|1[0-2])'
@@ -238,7 +238,7 @@ const TwelveHourTimeFormatParser = new Parser(
  * HH:mm
  * HH.mm.ss Z
  */
-const TwentyFourHourTimeFormatParser = new Parser(
+const twentyFourHourTimeFormatParser = new Parser(
 	'TwentyFourHourTimeFormatParser',
 	new RegExp('^'
 		+ '(?<twentyFourHour>2[0-3]|[0-1]\\d)'
@@ -268,7 +268,7 @@ const TwentyFourHourTimeFormatParser = new Parser(
  * - DD/MM/YY
  * - DD/MM
  */
-const UKStyleSlashDelimitedDateFormatParser = new Parser(
+const uKStyleSlashDelimitedDateFormatParser = new Parser(
 	'UKStyleSlashDelimitedDateFormatParser',
 	new RegExp('^'
 		+ '(?<dayOfMonth>0?[1-9]|[1-2]\\d|3[0-1])'
@@ -294,7 +294,7 @@ const UKStyleSlashDelimitedDateFormatParser = new Parser(
  * - MM/DD
  * - M/D
  */
-const USStyleSlashDelimitedDateFormatParser = new Parser(
+const uSStyleSlashDelimitedDateFormatParser = new Parser(
 	'USStyleSlashDelimitedDateFormatParser',
 	new RegExp('^'
 		+ '(?<month>0?[1-9]|1[0-2])'
@@ -309,16 +309,16 @@ const USStyleSlashDelimitedDateFormatParser = new Parser(
 );
 
 const parsers = [
-	ISO8601ExtendedDateTimeFormatParser,
-	ISO8601BasicDateTimeFormatParser,
-	RFC2822DateTimeFormatParser,
-	SlashDelimitedDateFormatParser,
-	UKStyleSlashDelimitedDateFormatParser,
-	USStyleSlashDelimitedDateFormatParser,
-	MonthNameAndDayOfMonthDateFormatParser,
-	DayOfMonthAndMonthNameDateFormatParser,
-	TwentyFourHourTimeFormatParser,
-	TwelveHourTimeFormatParser,
+	iSO8601ExtendedDateTimeFormatParser,
+	iSO8601BasicDateTimeFormatParser,
+	rFC2822DateTimeFormatParser,
+	slashDelimitedDateFormatParser,
+	uKStyleSlashDelimitedDateFormatParser,
+	uSStyleSlashDelimitedDateFormatParser,
+	monthNameAndDayOfMonthDateFormatParser,
+	dayOfMonthAndMonthNameDateFormatParser,
+	twentyFourHourTimeFormatParser,
+	twelveHourTimeFormatParser,
 ];
 
 export default parsers;
