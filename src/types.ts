@@ -14,3 +14,8 @@ export interface IParser {
 	readonly pattern: RegExp;
 	parse(date: Date): ParsedResult | undefined;
 }
+
+export interface IRefiner {
+	readonly name: string;
+	refine(parsedResults: Array<ParsedResult>): Array<ParsedResult>;
+}

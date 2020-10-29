@@ -1,20 +1,16 @@
-const StandardFormatParsersRefiner = (function() {
-	const Refiner: any = {};
+import {
+	ParsedResult,
+	IRefiner,
+} from '../types';
 
-	// Refiner name
-	Refiner.name = 'StandardFormatParsersRefiner';
+class StandardFormatParsersRefiner implements IRefiner {
+	public readonly name: string;
 
-	/**
-	 * Filters the parsed results
-	 * based on whether the parser
-	 * used is a standard one like
-	 * ISO 8601 or RFC 2822.
-	 *
-	 * @params parsedResults(Array of objects)
-	 *
-	 * @returns parsedResults(Array of objects)
-	 */
-	Refiner.refine = function(parsedResults) {
+	constructor(name: string) {
+		this.name = name;
+	}
+
+	refine(parsedResults: Array<ParsedResult>): Array<ParsedResult> {
 		const res = parsedResults.filter(r => {
 			return r.parser === 'ISO8601ExtendedDateTimeFormatParser' ||
 				r.parser === 'ISO8601BasicDateTimeFormatParser' ||
@@ -24,9 +20,7 @@ const StandardFormatParsersRefiner = (function() {
 			return parsedResults;
 		}
 		return res;
-	};
-
-	return Refiner;
-})(); 
+	}
+}
 
 export default StandardFormatParsersRefiner;

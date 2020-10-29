@@ -1,18 +1,16 @@
-const TimeFormatRefiner = (function() {
-	const Refiner: any = {};
+import {
+	ParsedResult,
+	IRefiner,
+} from '../types';
 
-	// Refiner name
-	Refiner.name = 'TimeFormatRefiner';
+class TimeFormatRefiner implements IRefiner {
+	public readonly name: string;
 
-	/**
-	 * Sets token type for time in hours based
-	 * on meridiem.
-	 *
-	 * @params parsedResults(Array of objects)
-	 *
-	 * @returns parsedResults(Array of objects)
-	 */
-	Refiner.refine = function(parsedResults) {
+	constructor(name: string) {
+		this.name = name;
+	}
+
+	refine(parsedResults: Array<ParsedResult>): Array<ParsedResult> {
 		parsedResults.forEach(r => {
 			let meridiemExists = false;
 			r.tokens.forEach(t => {
@@ -30,9 +28,7 @@ const TimeFormatRefiner = (function() {
 		});
 
 		return parsedResults;
-	};
-
-	return Refiner;
-})(); 
+	}
+}
 
 export default TimeFormatRefiner;
