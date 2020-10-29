@@ -17,7 +17,7 @@ class Parser implements IParser {
 
 	parse(date: Date): ParsedResult | undefined {
 		const match = this.pattern.exec(date);
-		if (!match) {
+		if (!match || !match.groups) {
 			return;
 		}
 

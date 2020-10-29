@@ -11,7 +11,7 @@ import {
 } from './cliui.js'
 
 (function() {
-	let args = null;
+	let args;
 	let date;
 
 	try {

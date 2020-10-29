@@ -5,7 +5,9 @@
     "module": "CommonJS",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "strictNullChecks": true,
+    "noImplicitThis": true
   },
   "include": ["src/**/*", "cmd/**/*", "./package.json"]
 }
