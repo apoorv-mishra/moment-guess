@@ -1,48 +1,38 @@
-const TimezoneFormatTokenAssigner = (function() {
-	const Assigner: any = {};
+import Token from '../parsers/Token';
+import {
+	IAssigner,
+} from '../types';
 
-	// Assigner name
-	Assigner.name = 'TimezoneFormatTokenAssigner';
+class TimezoneFormatTokenAssigner implements IAssigner {
+	public readonly name: string;
+	public readonly type: string;
 
-	// Assigner type
-	Assigner.type= 'timezone';
+	private _map: Map<RegExp, string>;
 
-	// Regexp for matching the format token 
-	Assigner.map = new Map();
-	Assigner.map.set(/[+-]\d{2}(?::\d{2})?/, 'Z');
-	Assigner.map.set(/[+-]\d{4}/, 'ZZ');
-	Assigner.map.set(/Z/, 'Z');
+	constructor(name, type) {
+		this.name = name;
+		this.type = type;
+		this._map = new Map();
 
-	// Specifically for timezone in RFC 2822 compliant dates
-	Assigner.map.set(/\s(?:(?:UT|GMT|[ECMP][SD]T)|[Zz]|[+-]\d{4})/, ' ZZ');
+		this._map.set(/[+-]\d{2}(?::\d{2})?/, 'Z');
+		this._map.set(/[+-]\d{4}/, 'ZZ');
+		this._map.set(/Z/, 'Z');
 
-	/**
-	 * Tests whether token type is same as
-	 * Assigner type.
-	 *
-	 * @params token(Object)
-	 *
-	 * @returns Boolean
-	 */
-	Assigner._testTokenType = function(token) {
+		// Specifically for timezone in RFC 2822 compliant dates
+		this._map.set(/\s(?:(?:UT|GMT|[ECMP][SD]T)|[Zz]|[+-]\d{4})/, ' ZZ');
+	}
+
+	private _testTokenType(token: Token): boolean {
 		return token.getType() === this.type;
 	}
 
-	/**
-	 * Assigns the matching format token
-	 * to input token.
-	 *
-	 * @params token(Object)
-	 */
-	Assigner.assign = function(token) {
-		this.map.forEach((formatToken, pattern) => {
+	public assign(token: Token): void {
+		this._map.forEach((formatToken, pattern) => {
 			if (this._testTokenType(token) && pattern.test(token.getValue())) {
 				token.setFormat(formatToken);
 			}
 		});
-	};
-
-	return Assigner;
-})(); 
+	}
+}
 
 export default TimezoneFormatTokenAssigner;

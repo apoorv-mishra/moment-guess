@@ -1,44 +1,34 @@
-const TwentyFourHourFormatTokenAssigner = (function() {
-	const Assigner: any = {};
+import Token from '../parsers/Token';
+import {
+	IAssigner,
+} from '../types';
 
-	// Assigner name
-	Assigner.name = 'TwentyFourHourFormatTokenAssigner';
+class TwentyFourHourFormatTokenAssigner implements IAssigner {
+	public readonly name: string;
+	public readonly type: string;
 
-	// Assigner type
-	Assigner.type= 'twentyFourHour';
+	private _map: Map<RegExp, string>;
 
-	// Regexp for matching the format token 
-	Assigner.map = new Map();
-	Assigner.map.set(/^(\d|1\d|2[0-3])$/, 'H');
-	Assigner.map.set(/^([0-1]\d|2[0-3])$/, 'HH');
+	constructor(name, type) {
+		this.name = name;
+		this.type = type;
+		this._map = new Map();
 
-	/**
-	 * Tests whether token type is same as
-	 * Assigner type.
-	 *
-	 * @params token(Object)
-	 *
-	 * @returns Boolean
-	 */
-	Assigner._testTokenType = function(token) {
+		this._map.set(/^(\d|1\d|2[0-3])$/, 'H');
+		this._map.set(/^([0-1]\d|2[0-3])$/, 'HH');
+	}
+
+	private _testTokenType(token: Token): boolean {
 		return token.getType() === this.type;
 	}
 
-	/**
-	 * Assigns the matching format token
-	 * to input token.
-	 *
-	 * @params token(Object)
-	 */
-	Assigner.assign = function(token) {
-		this.map.forEach((formatToken, pattern) => {
+	public assign(token: Token): void {
+		this._map.forEach((formatToken, pattern) => {
 			if (this._testTokenType(token) && pattern.test(token.getValue())) {
 				token.setFormat(formatToken);
 			}
 		});
-	};
+	}
+}
 
-	return Assigner;
-})(); 
-
-export default TwentyFourHourFormatTokenAssigner; 
+export default TwentyFourHourFormatTokenAssigner;

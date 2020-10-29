@@ -1,48 +1,37 @@
-const MonthFormatTokenAssigner = (function() {
-	const Assigner: any = {};
+import Token from '../parsers/Token';
+import {
+	IAssigner,
+} from '../types';
 
-	// Assigner name
-	Assigner.name = 'MonthFormatTokenAssigner';
+class MonthFormatTokenAssigner implements IAssigner {
+	public readonly name: string;
+	public readonly type: string;
 
-	// Assigner type
-	Assigner.type= 'month';
+	private _map: Map<RegExp, string>;
 
-	// Regexp for matching the format token 
-	Assigner.map = new Map();
-	Assigner.map.set(/\d{1,2}/, 'M');
-	Assigner.map.set(/\d{2}/, 'MM');
-	Assigner.map.set(/\d{1,2}(?:st|nd|rd|th)/, 'Mo');
-	Assigner.map.set(/^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)$/, 'MMM');
-	Assigner.map.set(/^(January|February|March|April|May|June|July|August|September|October|November|December)$/, 'MMMM');
+	constructor(name, type) {
+		this.name = name;
+		this.type = type;
+		this._map = new Map();
 
-	/**
-	 * Tests whether token type is same as
-	 * Assigner type.
-	 *
-	 * @params token(Object)
-	 *
-	 * @returns Boolean
-	 */
-	Assigner._testTokenType = function(token) {
+		this._map.set(/\d{1,2}/, 'M');
+		this._map.set(/\d{2}/, 'MM');
+		this._map.set(/\d{1,2}(?:st|nd|rd|th)/, 'Mo');
+		this._map.set(/^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)$/, 'MMM');
+		this._map.set(/^(January|February|March|April|May|June|July|August|September|October|November|December)$/, 'MMMM');
+	}
+
+	private _testTokenType(token: Token): boolean {
 		return token.getType() === this.type;
 	}
 
-	/**
-	 * Assigns the matching format token
-	 * to input token.
-	 *
-	 * @params token(Object)
-	 */
-	Assigner.assign = function(token) {
-		this.map.forEach((formatToken, pattern) => {
+	public assign(token: Token): void {
+		this._map.forEach((formatToken, pattern) => {
 			if (this._testTokenType(token) && pattern.test(token.getValue())) {
 				token.setFormat(formatToken);
 			}
 		});
-	};
+	}
+}
 
-	return Assigner;
-})();
-
-export default MonthFormatTokenAssigner; 
-
+export default MonthFormatTokenAssigner;

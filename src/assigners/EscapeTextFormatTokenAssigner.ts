@@ -1,38 +1,26 @@
-const EscapeTextFormatTokenAssigner = (function() {
-	const Assigner: any = {};
+import Token from '../parsers/Token';
+import {
+	IAssigner,
+} from '../types';
 
-	// Assigner name
-	Assigner.name = 'EscapeTextFormatTokenAssigner';
+class EscapeTextFormatTokenAssigner implements IAssigner {
+	public readonly name: string;
+	public readonly type: string;
 
-	// Assigner type
-	Assigner.type= 'escapeText';
+	constructor(name, type) {
+		this.name = name;
+		this.type = type;
+	}
 
-	/**
-	 * Tests whether token type is same as
-	 * Assigner type.
-	 *
-	 * @params token(Object)
-	 *
-	 * @returns Boolean
-	 */
-	Assigner._testTokenType = function(token) {
+	private _testTokenType(token: Token): boolean {
 		return token.getType() === this.type;
 	}
 
-	/**
-	 * Assigns the matching format token
-	 * to input token.
-	 *
-	 * @params token(Object)
-	 */
-	Assigner.assign = function(token) {
+	public assign(token: Token): void {
 		if (this._testTokenType(token)) {
 			token.setFormat(`[${token.getValue()}]`);
 		}
-	};
+	}
+}
 
-	return Assigner;
-})(); 
-
-
-export default EscapeTextFormatTokenAssigner; 
+export default EscapeTextFormatTokenAssigner;

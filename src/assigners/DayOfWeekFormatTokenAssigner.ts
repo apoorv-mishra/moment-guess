@@ -1,47 +1,37 @@
-const DayOfWeekFormatTokenAssigner = (function() {
-	const Assigner: any = {};
+import Token from '../parsers/Token';
+import {
+	IAssigner,
+} from '../types';
 
-	// Assigner name
-	Assigner.name = 'DayOfWeekFormatTokenAssigner';
+class DayOfWeekFormatTokenAssigner implements IAssigner {
+	public readonly name: string;
+	public readonly type: string;
 
-	// Assigner type
-	Assigner.type= 'dayOfWeek';
+	private _map: Map<RegExp, string>;
 
-	// Regexp for ma tching the format token 
-	Assigner.map = new Map();
-	Assigner.map.set(/[0-6]/, 'd');
-	Assigner.map.set(/[0-6](?:st|nd|rd|th)/, 'do');
-	Assigner.map.set(/(?:Su|Mo|Tu|We|Th|Fr|Sa)/, 'dd');
-	Assigner.map.set(/(?:Sun|Mon|Tue|Wed|Thu|Fri|Sat)/, 'ddd');
-	Assigner.map.set(/(?:Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday)/, 'dddd');
+	constructor(name, type) {
+		this.name = name;
+		this.type = type;
+		this._map = new Map();
 
-	/**
-	 * Tests whether token type is same as
-	 * Assigner type.
-	 *
-	 * @params token(Object)
-	 *
-	 * @returns Boolean
-	 */
-	Assigner._testTokenType = function(token) {
+		this._map.set(/[0-6]/, 'd');
+		this._map.set(/[0-6](?:st|nd|rd|th)/, 'do');
+		this._map.set(/(?:Su|Mo|Tu|We|Th|Fr|Sa)/, 'dd');
+		this._map.set(/(?:Sun|Mon|Tue|Wed|Thu|Fri|Sat)/, 'ddd');
+		this._map.set(/(?:Sunday|Monday|Tuesday|Wednesday|Thursday|Friday|Saturday)/, 'dddd');
+	}
+
+	private _testTokenType(token: Token): boolean {
 		return token.getType() === this.type;
 	}
 
-	/**
-	 * Assigns the matching format token
-	 * to input token.
-	 *
-	 * @params token(Object)
-	 */
-	Assigner.assign = function(token) {
-		this.map.forEach((formatToken, pattern) => {
+	public assign(token: Token): void {
+		this._map.forEach((formatToken, pattern) => {
 			if (this._testTokenType(token) && pattern.test(token.getValue())) {
 				token.setFormat(formatToken);
 			}
 		});
-	};
-
-	return Assigner;
-})(); 
+	}
+}
 
 export default DayOfWeekFormatTokenAssigner; 

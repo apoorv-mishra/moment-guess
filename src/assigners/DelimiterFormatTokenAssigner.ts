@@ -1,22 +1,18 @@
-const DelimiterFormatTokenAssigner = (function() {
-	const Assigner: any = {};
+import Token from '../parsers/Token';
+import {
+	IAssigner,
+} from '../types';
 
-	// Assigner name
-	Assigner.name = 'DelimiterFormatTokenAssigner';
+class DelimiterFormatTokenAssigner implements IAssigner {
+	public readonly name: string;
+	public readonly type: string;
 
-	// Assigner type
-	Assigner.type= 'delimiter';
+	constructor(name, type) {
+		this.name = name;
+		this.type = type;
+	}
 
-	/**
-	 * Assigns the matching format token
-	 * to input token.
-	 *
-	 * @params token(Object)
-	 */
-	Assigner.assign = function(token) { /* noop */ };
+	public assign(token: Token): void { /* noop */ }
+}
 
-	return Assigner;
-
-})();
-
-export default DelimiterFormatTokenAssigner; 
+export default DelimiterFormatTokenAssigner;
