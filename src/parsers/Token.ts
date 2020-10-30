@@ -1,17 +1,15 @@
 export default class Token {
 
-	value: any;
-	type: any;
-	index: any;
-	format: any;
+	private _value: string;
+	private _type: string;
+	private _format: string;
 
 	/**
 	 * Constructor.
 	 */
-	constructor({ value, type, index, format }: any) {
-		this.value = value;
-		this.type = type;
-		this.format = format
+	constructor(value: string, type: string) {
+		this._value = value;
+		this._type = type;
 	}
 
 	/**
@@ -19,17 +17,17 @@ export default class Token {
 	 *
 	 * @returns String
 	 */
-	getValue() {
-		return this.value;
+	get value() {
+		return this._value;
 	}
 
 	/**
 	 * Sets token value.
 	 *
-	 * @params String
+	 * @param String
 	 */
-	setValue(value) {
-		this.value = value;
+	set value(value: string) {
+		this._value = value;
 	}
 
 	/**
@@ -37,17 +35,17 @@ export default class Token {
 	 *
 	 * @returns String
 	 */
-	getType() {
-		return this.type;
+	get type() {
+		return this._type;
 	}
 
 	/**
 	 * Sets token type.
 	 *
-	 * @params String
+	 * @param String
 	 */
-	setType(type) {
-		this.type = type;
+	set type(type: string) {
+		this._type = type;
 	}
 
 	/**
@@ -55,16 +53,16 @@ export default class Token {
 	 *
 	 * @returns String
 	 */
-	getFormat() {
-		return this.format;
+	get format() {
+		return this._format;
 	}
 
 	/**
 	 * Sets token format.
 	 *
-	 * @params String
+	 * @param String
 	 */
-	setFormat(format) {
-		this.format = format;
+	set format(format: string) {
+		this._format = format;
 	}
 }

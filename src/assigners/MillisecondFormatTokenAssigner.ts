@@ -9,7 +9,7 @@ class MillisecondFormatTokenAssigner implements IAssigner {
 
 	private _map: Map<RegExp, string>;
 
-	constructor(name, type) {
+	constructor(name: string, type: string) {
 		this.name = name;
 		this.type = type;
 		this._map = new Map();
@@ -20,13 +20,13 @@ class MillisecondFormatTokenAssigner implements IAssigner {
 	}
 
 	private _testTokenType(token: Token): boolean {
-		return token.getType() === this.type;
+		return token.type === this.type;
 	}
 
 	public assign(token: Token): void {
 		this._map.forEach((formatToken, pattern) => {
-			if (this._testTokenType(token) && pattern.test(token.getValue())) {
-				token.setFormat(formatToken);
+			if (this._testTokenType(token) && pattern.test(token.value)) {
+				token.format = formatToken;
 			}
 		});
 	}

@@ -7,18 +7,18 @@ class EscapeTextFormatTokenAssigner implements IAssigner {
 	public readonly name: string;
 	public readonly type: string;
 
-	constructor(name, type) {
+	constructor(name: string, type: string) {
 		this.name = name;
 		this.type = type;
 	}
 
 	private _testTokenType(token: Token): boolean {
-		return token.getType() === this.type;
+		return token.type === this.type;
 	}
 
 	public assign(token: Token): void {
 		if (this._testTokenType(token)) {
-			token.setFormat(`[${token.getValue()}]`);
+			token.format = `[${token.value}]`;
 		}
 	}
 }

@@ -21,7 +21,7 @@ class TimeFormatRefiner implements IRefiner {
 			if (meridiemExists) {
 				r.tokens.forEach(t => {
 					if (t.type === 'twentyFourHour') {
-						t.setType('twelveHour');
+						t.type = 'twelveHour';
 					}
 				});
 			}

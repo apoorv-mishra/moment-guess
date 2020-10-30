@@ -24,10 +24,10 @@ class Parser implements IParser {
 		let tokens: Array<Token> = [];
 		for (const [key, val] of Object.entries(match.groups)) {
 			if (val) {
-				tokens.push(new Token({
-					value: val,
-					type: /delim\d+/.test(key) ? 'delimiter' : key,
-				}));
+				tokens.push(new Token(
+					val,
+					/delim\d+/.test(key) ? 'delimiter' : key,
+				));
 			}
 		}
 

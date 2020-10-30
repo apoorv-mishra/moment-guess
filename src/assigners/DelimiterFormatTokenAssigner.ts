@@ -7,7 +7,7 @@ class DelimiterFormatTokenAssigner implements IAssigner {
 	public readonly name: string;
 	public readonly type: string;
 
-	constructor(name, type) {
+	constructor(name: string, type: string) {
 		this.name = name;
 		this.type = type;
 	}

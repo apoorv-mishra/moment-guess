@@ -45,7 +45,7 @@ export default class Guesser {
 	static getFormatString(tokens: Array<Token>): Format {
 		let formatString: Format = '';
 		tokens.forEach(token => {
-			formatString += token.getFormat() ? token.getFormat() : token.getValue();
+			formatString += token.format ? token.format : token.value;
 		});
 		return formatString;
 	}
