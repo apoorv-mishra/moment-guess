@@ -10,6 +10,7 @@ export default class Token {
 	constructor(value: string, type: string) {
 		this._value = value;
 		this._type = type;
+		this._format = '';
 	}
 
 	/**
