@@ -20,7 +20,7 @@
 
 #### 📝 Note: The following commands DO NOT INSTALL the package system-wide, permanently. *npx* is just a [package runner](https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner).
 ```sh
-npx moment-guess --date 'Fri, January 30th 2020, 10:00 AM'
+npx moment-guess --date "Fri, January 30th 2020, 10:00 AM"
 ```
 For details, try `npx moment-guess --help`
 
@@ -34,7 +34,7 @@ For details, try `npx moment-guess --help`
 - *Fri, January 30th 2020, 10:00 AM*(dow, dd Mon yyyy[, hh:mm:ss am|pm|AM|PM] with both short and long names)
 
 ## 🤷‍♀️ What happens in case of ambiguous input?
-If the input is ambiguous like 01/01/2020(could mean DD/MM/YYYY or MM/DD/YYYY), **it would display all possible matched formats**. Try `npx -q moment-guess -d '01/01/2020'`
+If the input is ambiguous like 01/01/2020(could mean DD/MM/YYYY or MM/DD/YYYY), **it would display all possible matched formats**. Try `npx -q moment-guess -d "01/01/2020"`
 
 ## :thinking: Motivation
 
