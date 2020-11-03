@@ -62,7 +62,7 @@ describe('ISO 8601 extended date time formats', () => {
 	});
 
 	test('# calendar date and time with hours and timezone Z', () => {
-		expect(guessFormat('2013-02-08 09Z')).toBe('YYYY-MM-DD HHZ');
+		expect(guessFormat('2013-02-08 09Z')).toBe('YYYY-MM-DD HH[Z]');
 	});
 
 	test('# calendar date and full time with timezone +HH:mm', () => {
@@ -129,7 +129,7 @@ describe('ISO 8601 basic date time formats', () => {
 	});
 
 	test('# short date and time with hours and timezone Z', () => {
-		expect(guessFormat('20130208T09Z')).toBe('YYYYMMDDTHHZ');
+		expect(guessFormat('20130208T09Z')).toBe('YYYYMMDDTHH[Z]');
 	});
 
 	test('# short date and full time with timezone +HH:mm', () => {

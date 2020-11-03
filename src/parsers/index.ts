@@ -1,5 +1,48 @@
 import Parser from './Parser';
 
+const abbreviatedTimezones = 'UT|'
+
+		// https://www.timeanddate.com/time/zones/africa
+		+ 'CAT|CET|CVT|EAT|EET|GMT|MUT|RET|SAST|SCT|WAST|WAT|WEST|WET|WST|WT|'
+
+		// https://www.timeanddate.com/time/zones/asia
+		+ 'ADT|AFT|ALMT|AMST|AMT|ANAST|ANAT|AQTT|AST|AZST|AZT|BNT|BST|BTT|CHOST|CHOT|'
+		+ 'CST|EEST|EET|GET|GST|HKT|HOVST|HOVT|ICT|IDT|IRDT|IRKST|IRKT|IST|JST|KGT|KRAST|'
+		+ 'KRAT|KST|MAGST|MAGT|MMT|MSK|MVT|NOVST|NOVT|NPT|OMSST|OMST|ORAT|PETST|PETT|PHT|'
+		+ 'PKT|PYT|QYZT|SAKT|SGT|SRET|TJT|TLT|TMT|TRT|ULAST|ULAT|UZT|VLAST|VLAT|WIB|WIT|'
+		+ 'YAKST|YAKT|YEKST|YEKT|'
+
+		// https://www.timeanddate.com/time/zones/antarctica
+		+ 'ART|CAST|CEST|CLST|CLT|DAVT|DDUT|GMT|MAWT|NZDT|NZST|ROTT|SYOT|VOST|'
+
+		// https://www.timeanddate.com/time/zones/atlantic
+		+ 'ADT|AST|AT|AZOST|AZOT|'
+
+		// https://www.timeanddate.com/time/zones/au
+		+ 'ACDT|ACST|ACT|ACWST|AEDT|AEST|AET|AWDT|AWST|CXT|LHDT|LHST|NFDT|NFT|'
+
+		// https://www.timeanddate.com/time/zones/caribbean
+		+ 'AST|AT|CDT|CIDST|CIST|CST|EDT|EST|ET|'
+
+		// https://www.timeanddate.com/time/zones/ca
+		+ 'CST|CT|EST|ET|'
+
+		// https://www.timeanddate.com/time/zones/eu
+		+ 'BST|CEST|CET|EEST|EET|FET|GET|GMT|IST|KUYT|MSD|MSK|SAMT|TRT|WEST|WET|'
+
+		// https://www.timeanddate.com/time/zones/indian-ocean
+		+ 'CCT|EAT|IOT|TFT|'
+
+		// https://www.timeanddate.com/time/zones/na
+		+ 'ADT|AKDT|AKST|AST|AT|CDT|CST|CT|EDT|EGST|EGT|ET|GMT|HDT|HST|MDT|MST|MT|NDT|NST|PDT|PMDT|PMST|PST|PT|WGST|WGT|'
+
+		// https://www.timeanddate.com/time/zones/pacific
+		+ 'AoE|BST|CHADT|CHAST|CHUT|CKT|ChST|EASST|EAST|FJST|FJT|GALT|GAMT|GILT|HST|KOST|LINT|MART|'
+		+ 'MHT|NCT|NRT|NUT|NZDT|NZST|PGT|PHOT|PONT|PST|PWT|SBT|SST|TAHT|TKT|TOST|TOT|TVT|VUT|WAKT|WFT|WST|YAPT|'
+
+		// https://www.timeanddate.com/time/zones/sa
+		+ 'ACT|AMST|AMT|ART|BOT|BRST|BRT|CLST|CLT|COT|ECT|FKST|FKT|FNT|GFT|GST|GYT|PET|PYST|PYT|SRT|UYST|UYT|VET|WARST';
+
 /**
  * Date only
  *
@@ -49,7 +92,7 @@ const dayOfMonthAndMonthNameDateFormatParser = new Parser(
 			+ '(?<meridiem>am|pm|AM|PM)?'
 			+ '(?:'
 				+ '(?<delim12>\\s)'
-				+ '(?<timezone>[+-]\\d{2}(?::?\\d{2})?|Z)'
+				+ `(?<timezone>[+-]\\d{2}(?::?\\d{2})?|Z|${abbreviatedTimezones})`
 			+ ')?'
 		+ ')?'
 		+ '$'
@@ -119,6 +162,7 @@ const iSO8601ExtendedDateTimeFormatParser = new Parser(
  *
  * - Jan 1, 10:00 AM
  * - Sunday, January 1st, 23:00
+ * - Sunday, January 1st, 23:00 PDT
  */
 const monthNameAndDayOfMonthDateFormatParser = new Parser(
 	'MonthNameAndDayOfMonthDateFormatParser',
@@ -155,7 +199,7 @@ const monthNameAndDayOfMonthDateFormatParser = new Parser(
 				+ '(?<meridiem>am|pm|AM|PM)?'
 				+ '(?:'
 					+ '(?<delim12>\\s)'
-					+ '(?<timezone>[+-]\\d{2}(?::?\\d{2})?|Z)'
+					+ `(?<timezone>[+-]\\d{2}(?::?\\d{2})?|Z|${abbreviatedTimezones})`
 				+ ')?'
 			+ ')?'
 		+ ')?'
@@ -178,7 +222,8 @@ const rFC2822DateTimeFormatParser = new Parser(
 		// to avoid timezone assigner
 		// to be confused with 'Z for timezone from ISO 8601'
 		// and 'Z for timezone from RFC 2822'
-		+ '(?<timezone>\\s(?:(?:UT|GMT|[ECMP][SD]T)|[Zz]|[+-]\\d{4}))'
+		+ '(?<delim8>\\s)'
+		+ '(?<timezone>(?:(?:UT|GMT|[ECMP][SD]T)|[Zz]|[+-]\\d{4}))'
 		+ '$'
 	)
 );
@@ -205,6 +250,7 @@ const slashDelimitedDateFormatParser = new Parser(
 
 /**
  * hh:mm[AP]M
+ * hh:mm[AP]M [abbr-tz]
  * hh[AP]M
  */
 const twelveHourTimeFormatParser = new Parser(
@@ -227,7 +273,7 @@ const twelveHourTimeFormatParser = new Parser(
 		+ '(?<meridiem>am|pm|AM|PM)'
 		+ '(?:'
 			+ '(?<delim5>\\s)'
-			+ '(?<timezone>[+-]\\d{2}(?::?\\d{2})?|Z)'
+			+ `(?<timezone>[+-]\\d{2}(?::?\\d{2})?|Z|${abbreviatedTimezones})`
 		+ ')?'
 		+ '$'
 	)
@@ -254,7 +300,7 @@ const twentyFourHourTimeFormatParser = new Parser(
 		+ ')?'
 		+ '(?:'
 			+ '(?<delim4>\\s)'
-			+ '(?<timezone>[+-]\\d{2}(?::?\\d{2})?|Z)'
+			+ `(?<timezone>[+-]\\d{2}(?::?\\d{2})?|Z|${abbreviatedTimezones})`
 		+ ')?'
 		+ '$'
 	)

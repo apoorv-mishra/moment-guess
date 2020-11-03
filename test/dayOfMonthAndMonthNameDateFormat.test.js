@@ -98,4 +98,8 @@ describe('Day of month followed by month name type dates', () => {
 	test('# full date, HH:mm', () => {
 		expect(guessFormat('Sunday, 31st January 2020, 09:00')).toBe('dddd, Do MMMM YYYY, HH:mm');
 	});
+
+	test('# full date with abbreviated timezone', () => {
+		expect(guessFormat('Sunday, 31st January 2020, 09:00 IST')).toBe('dddd, Do MMMM YYYY, HH:mm z');
+	})
 });

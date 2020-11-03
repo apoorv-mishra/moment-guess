@@ -5,6 +5,10 @@ describe('Time formats', () => {
 		expect(guessFormat('21:22')).toBe('HH:mm');
 	});
 
+	test('# hours and minutes with abbreviated timezone (24 hr format)', () => {
+		expect(guessFormat('21:22 EST')).toBe('HH:mm z');
+	});
+
 	test('# hours and mins, dot sep (24 hr format)', () => {
 		expect(guessFormat('21.22')).toBe('HH.mm');
 	});
@@ -31,6 +35,10 @@ describe('Time formats', () => {
 
 	test('# hours and mins, colon sep (12 hr format, am|pm)', () => {
 		expect(guessFormat('10:00 am')).toBe('hh:mm a');
+	});
+
+	test('# hours and mins, colon sep (12 hr format, am|pm)', () => {
+		expect(guessFormat('10:00 AM GMT')).toBe('hh:mm A z');
 	});
 
 	test('# hours, mins, secs colon sep (12 hr format, am|pm)', () => {
