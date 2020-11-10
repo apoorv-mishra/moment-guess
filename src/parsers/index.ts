@@ -224,12 +224,12 @@ const rFC2822DateTimeFormatParser = new Parser(
 );
 
 /*
- * YYYY/MM/DD
+ * YYYY/MM/DD [hh:mm a|A [abbr-tz]]
  * YYYY/M/D
  * YYYY/MM
  * YYYY/M
  */
-const slashDelimitedDateFormatParser = new Parser(
+const slashDelimitedDateTimeFormatParser = new Parser(
 	'SlashDelimitedDateFormatParser',
 	new RegExp('^'
 		+ '(?<year>\\d{4}|\\d{2})'
@@ -239,9 +239,35 @@ const slashDelimitedDateFormatParser = new Parser(
 			+ '(?<delim2>[/.-])'
 			+ '(?<dayOfMonth>0?[1-9]|[1-2]\\d|3[0-1])'
 		+ ')?'
+		+ '(?:'
+			+ '(?:'
+				+ '(?<delim3>,)?'
+				+ '(?<delim4>\\s)'
+				+ '(?:(?<twentyFourHour>2[0-3]|[0-1]\\d)|(?<twelveHour>0\\d|1[0-2]))'
+				+ '(?:'
+					+ '(?<delim5>[:.])'
+					+ '(?<minute>[0-5]\\d)'
+				+ ')?'
+				+ '(?:'
+					+ '(?<delim6>[:.])'
+					+ '(?<second>[0-5]\\d)'
+				+ ')?'
+				+ '(?:'
+					+ '(?<delim7>.)'
+					+ '(?<millisecond>\\d{3})'
+				+ ')?'
+				+ '(?<delim8>\\s)?'
+				+ '(?<meridiem>am|pm|AM|PM)?'
+				+ '(?:'
+					+ '(?<delim9>\\s)'
+					+ `(?<timezone>[+-]\\d{2}(?::?\\d{2})?|Z|${abbreviatedTimezones})`
+				+ ')?'
+			+ ')?'
+		+ ')?'
 		+ '$'
 	)
 );
+
 
 /**
  * hh:mm[AP]M
@@ -309,7 +335,7 @@ const twentyFourHourTimeFormatParser = new Parser(
  * - DD/MM/YY
  * - DD/MM
  */
-const uKStyleSlashDelimitedDateFormatParser = new Parser(
+const uKStyleSlashDelimitedDateTimeFormatParser = new Parser(
 	'UKStyleSlashDelimitedDateFormatParser',
 	new RegExp('^'
 		+ '(?<dayOfMonth>0?[1-9]|[1-2]\\d|3[0-1])'
@@ -318,6 +344,31 @@ const uKStyleSlashDelimitedDateFormatParser = new Parser(
 		+ '(?:'
 			+ '(?<delim2>[/.-])'
 			+ '(?<year>\\d{4}|\\d{2})'
+		+ ')?'
+		+ '(?:'
+			+ '(?:'
+				+ '(?<delim3>,)?'
+				+ '(?<delim4>\\s)'
+				+ '(?:(?<twentyFourHour>2[0-3]|[0-1]\\d)|(?<twelveHour>0\\d|1[0-2]))'
+				+ '(?:'
+					+ '(?<delim5>[:.])'
+					+ '(?<minute>[0-5]\\d)'
+				+ ')?'
+				+ '(?:'
+					+ '(?<delim6>[:.])'
+					+ '(?<second>[0-5]\\d)'
+				+ ')?'
+				+ '(?:'
+					+ '(?<delim7>.)'
+					+ '(?<millisecond>\\d{3})'
+				+ ')?'
+				+ '(?<delim8>\\s)?'
+				+ '(?<meridiem>am|pm|AM|PM)?'
+				+ '(?:'
+					+ '(?<delim9>\\s)'
+					+ `(?<timezone>[+-]\\d{2}(?::?\\d{2})?|Z|${abbreviatedTimezones})`
+				+ ')?'
+			+ ')?'
 		+ ')?'
 		+ '$'
 	)
@@ -335,7 +386,7 @@ const uKStyleSlashDelimitedDateFormatParser = new Parser(
  * - MM/DD
  * - M/D
  */
-const uSStyleSlashDelimitedDateFormatParser = new Parser(
+const uSStyleSlashDelimitedDateTimeFormatParser = new Parser(
 	'USStyleSlashDelimitedDateFormatParser',
 	new RegExp('^'
 		+ '(?<month>0?[1-9]|1[0-2])'
@@ -345,6 +396,31 @@ const uSStyleSlashDelimitedDateFormatParser = new Parser(
 			+ '(?<delim2>[/.-])'
 			+ '(?<year>\\d{4}|\\d{2})'
 		+ ')?'
+		+ '(?:'
+			+ '(?:'
+				+ '(?<delim3>,)?'
+				+ '(?<delim4>\\s)'
+				+ '(?:(?<twentyFourHour>2[0-3]|[0-1]\\d)|(?<twelveHour>0\\d|1[0-2]))'
+				+ '(?:'
+					+ '(?<delim5>[:.])'
+					+ '(?<minute>[0-5]\\d)'
+				+ ')?'
+				+ '(?:'
+					+ '(?<delim6>[:.])'
+					+ '(?<second>[0-5]\\d)'
+				+ ')?'
+				+ '(?:'
+					+ '(?<delim7>.)'
+					+ '(?<millisecond>\\d{3})'
+				+ ')?'
+				+ '(?<delim8>\\s)?'
+				+ '(?<meridiem>am|pm|AM|PM)?'
+				+ '(?:'
+					+ '(?<delim9>\\s)'
+					+ `(?<timezone>[+-]\\d{2}(?::?\\d{2})?|Z|${abbreviatedTimezones})`
+				+ ')?'
+			+ ')?'
+		+ ')?'
 		+ '$'
 	)
 );
@@ -353,9 +429,9 @@ const parsers = [
 	iSO8601ExtendedDateTimeFormatParser,
 	iSO8601BasicDateTimeFormatParser,
 	rFC2822DateTimeFormatParser,
-	slashDelimitedDateFormatParser,
-	uKStyleSlashDelimitedDateFormatParser,
-	uSStyleSlashDelimitedDateFormatParser,
+	slashDelimitedDateTimeFormatParser,
+	uKStyleSlashDelimitedDateTimeFormatParser,
+	uSStyleSlashDelimitedDateTimeFormatParser,
 	monthNameAndDayOfMonthDateFormatParser,
 	dayOfMonthAndMonthNameDateFormatParser,
 	twentyFourHourTimeFormatParser,

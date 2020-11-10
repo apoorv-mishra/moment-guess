@@ -5,6 +5,14 @@ describe('Slash, dot or dash delimited date formats', () => {
 		expect(guessFormat('2020/01/01')).toBe('YYYY/MM/DD');
 	});
 
+	test('# YYYY/MM/DD HH:mm z', () => {
+		expect(guessFormat('2020/01/01 17:00 IST')).toBe('YYYY/MM/DD HH:mm z');
+	});
+
+	test('# YYYY/MM/DD hh:mm A z', () => {
+		expect(guessFormat('2020/01/01 10:00 AM IST')).toBe('YYYY/MM/DD hh:mm A z');
+	});
+
 	test('# YYYY.MM.DD', () => {
 		expect(guessFormat('2020.01.01')).toBe('YYYY.MM.DD');
 	});
@@ -126,6 +134,10 @@ describe('Slash, dot or dash delimited date formats', () => {
 		expect(guessFormat('13/01/2020')).toBe('DD/MM/YYYY');
 	});
 
+	test('# DD/MM/YYYY hh:mm a z', () => {
+		expect(guessFormat('13/01/2020 01:00 pm EST')).toBe('DD/MM/YYYY hh:mm a z');
+	});
+
 	test('# DD.MM.YYYY', () => {
 		expect(guessFormat('13.01.2020')).toBe('DD.MM.YYYY');
 	});
@@ -147,11 +159,32 @@ describe('Slash, dot or dash delimited date formats', () => {
 		expect(result).toEqual(expect.arrayContaining(['YY/MM/DD', 'MM/DD/YY', 'DD/MM/YY']));
 	});
 
+	test('# MM, DD, YY in range [01, 12] slash delimited with time', () => {
+		const result = guessFormat('01/02/03 10:00 PM');
+		expect(result).toBeInstanceOf(Array);
+		expect(result).toHaveLength(3);
+		expect(result).toEqual(expect.arrayContaining(['YY/MM/DD hh:mm A', 'MM/DD/YY hh:mm A', 'DD/MM/YY hh:mm A']));
+	});
+
 	test('# MM, DD, YY in range [01, 12] dot delimited', () => {
 		const result = guessFormat('01.02.03');
 		expect(result).toBeInstanceOf(Array);
 		expect(result).toHaveLength(4);
 		expect(result).toEqual(expect.arrayContaining(['YY.MM.DD', 'MM.DD.YY', 'DD.MM.YY', 'HH.mm.ss']));
+	});
+
+	test('# MM, DD, YY in range [01, 12] dot delimited with colon delimited time', () => {
+		const result = guessFormat('01.02.03 10:00 PDT');
+		expect(result).toBeInstanceOf(Array);
+		expect(result).toHaveLength(3);
+		expect(result).toEqual(expect.arrayContaining(['YY.MM.DD HH:mm z', 'MM.DD.YY HH:mm z', 'DD.MM.YY HH:mm z']));
+	});
+
+	test('# MM, DD, YY in range [01, 12] dot delimited with dot delimited time', () => {
+		const result = guessFormat('01.02.03 10.00 PDT');
+		expect(result).toBeInstanceOf(Array);
+		expect(result).toHaveLength(3);
+		expect(result).toEqual(expect.arrayContaining(['YY.MM.DD HH.mm z', 'MM.DD.YY HH.mm z', 'DD.MM.YY HH.mm z']));
 	});
 
 	test('# MM, DD, YY in range [01, 12] dash delimited', () => {
