@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to moment-guess 👋<br> <img src="./logo.png" /></h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.1.1-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.1.2-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/apoorv-mishra/moment-guess#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
@@ -18,11 +18,28 @@
 
 ## 👨‍💻 Usage
 
-#### 📝 Note: The following commands DO NOT INSTALL the package system-wide, permanently. *npx* is just a [package runner](https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner).
+### 💻 CLI
+
 ```sh
 npx moment-guess --date "Fri, January 30th 2020, 10:00 AM"
 ```
 For details, try `npx moment-guess --help`
+
+#### 📝 Note: The above commands DO NOT INSTALL the package system-wide, *npx* is just a [package runner](https://blog.npmjs.org/post/162869356040/introducing-npx-an-npm-package-runner).
+
+### 📦 Package
+
+```sh
+npm install moment-guess
+```
+
+```javascript
+const guessFormat = require('moment-guess');
+
+console.log(guessFormat("31/12/2020")); // DD/MM/YYYY
+console.log(guessFormat("01/01/2020 10:00 AM PST")); // [ 'DD/MM/YYYY hh:mm A z', 'MM/DD/YYYY hh:mm A z' ]
+console.log(guessFormat("Fri, January 30th 2020, 10:00 AM")); // ddd, MMMM Do YYYY, hh:mm A
+```
 
 ## 🙌 Supported Formats
 - *2020-07-24T17:09:03+00:00*([IS0 8601](https://en.wikipedia.org/wiki/ISO_8601))
