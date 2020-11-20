@@ -8,11 +8,17 @@ export default [{
 	input: './src/index.ts',
 	output: [
 		{
-			file: 'dist/bundle.js',
+			file: pkg.main,
 			format: 'cjs',
 			name: 'MomentGuess',
 			sourcemap: true,
 		},
+		{
+			file: pkg.module,
+			format: 'es',
+			name: 'MomentGuess',
+			sourcemap: true,
+		}
 	],
 	plugins: [
 		resolve(),

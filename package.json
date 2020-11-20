@@ -10,6 +10,8 @@
   "bugs": {
     "url": "https://github.com/apoorv-mishra/moment-guess/issues"
   },
+  "main": "dist/bundle.js",
+  "module": "dist/bundle.esm.js",
   "bin": {
     "moment-guess": "bin/bundle.cmd.js"
   },
@@ -35,6 +37,7 @@
     "typescript": "^4.0.3"
   },
   "files": [
-    "bin"
+    "bin",
+    "dist/bundle.esm.js"
   ]
 }
