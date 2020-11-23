@@ -23,5 +23,6 @@ export interface IRefiner {
 export interface IAssigner {
 	readonly name: string;
 	readonly type: string;
+	readonly format?: string;
 	assign(token: Token): void;
 }

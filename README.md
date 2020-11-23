@@ -21,7 +21,11 @@
 ### 💻 CLI
 
 ```sh
+# output default format
 npx moment-guess --date "Fri, January 30th 2020, 10:00 AM"
+
+# output strftime format
+npx moment-guess --date "31st Dec, 2020" --format strftime
 ```
 For details, try `npx moment-guess --help`
 
@@ -36,12 +40,30 @@ npm install moment-guess
 ```javascript
 const guessFormat = require('moment-guess');
 
+// default format
 console.log(guessFormat("31/12/2020")); // DD/MM/YYYY
-console.log(guessFormat("01/01/2020 10:00 AM PST")); // [ 'DD/MM/YYYY hh:mm A z', 'MM/DD/YYYY hh:mm A z' ]
-console.log(guessFormat("Fri, January 30th 2020, 10:00 AM")); // ddd, MMMM Do YYYY, hh:mm A
+
+// default format
+console.log(guessFormat("01/01/2020 10:00 AM PST", "default")); // [ 'DD/MM/YYYY hh:mm A z', 'MM/DD/YYYY hh:mm A z' ]
+
+// strftime format
+console.log(guessFormat("Fri, January 30th 2020, 10:00 AM", "strftime")); // %a, %B %o %Y, %I:%M %p
+
+// Errors!
+try {
+	console.log(guessFormat("Invalid date!"));
+} catch (err) {
+	console.log(err.message); // Couldn't parse date
+}
+
+try {
+	console.log(guessFormat("Mo, 23rd Nov, 2020", "strftime"));
+} catch(err) {
+	console.log(err.message); // Couldn't find strftime modifier for "Mo"
+}
 ```
 
-## 🙌 Supported Formats
+## 🙌 Supported Date Formats
 - *2020-07-24T17:09:03+00:00*([IS0 8601](https://en.wikipedia.org/wiki/ISO_8601))
 
 - *Mon, 06 Mar 2017 21:22:23 +0000*([RFC 2822](https://tools.ietf.org/html/rfc2822#section-3.3))

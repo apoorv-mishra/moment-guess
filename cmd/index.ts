@@ -13,17 +13,18 @@ import {
 (function() {
 	let args;
 	let date;
+	let format;
 
 	try {
 		args = arg({
 			'--help': Boolean,
 			'--version': Boolean,
 			'--date': String,
-			'--preference': String,
+			'--format': String,
 			'-h': '--help',
 			'-v': '--version',
 			'-d': '--date',
-			'-p': '--preference',
+			'-f': '--format',
 		});
 
 		if (args['--help']) {
@@ -35,13 +36,16 @@ import {
 		if (args['--date']) {
 			date = args['--date'];
 		}
+		if (args['--format']) {
+			format = args['--format'];
+		}
 
 		if (!date) {
 			error('Missing date!');
 			return showUsage();
 		}
 
-		const res = guessFormat(date);
+		const res = guessFormat(date, format);
 
 		if (res instanceof Array) {
 			info('Multiple formats matched!\n');
