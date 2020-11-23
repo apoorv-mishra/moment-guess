@@ -26,6 +26,8 @@ export function showHelp(): void {
 	{bold USAGE}
 
 	{bold $} {cyan npx moment-guess} --date {yellow 2020-10-10}
+	{bold $} {cyan npx moment-guess} --date "{yellow 31st Dec, 2020}" --format {blue default}
+	{bold $} {cyan npx moment-guess} --date "{yellow Mon, 06 Mar 2017 21:00:00 +0000}" --format {blue strftime}
 	{bold $} {cyan npx moment-guess} --version
 	{bold $} {cyan npx moment-guess} --help
 
@@ -36,6 +38,9 @@ export function showHelp(): void {
 	-v, --version                       Displays the current version of moment-guess
 
 	-d, --date                          Displays the provided date's format
+
+	-f, --format                        (optional)Format to display, can be one of "strftime" or "default"
+					    To be used in conjunction with --date
 	`
 	);
 }

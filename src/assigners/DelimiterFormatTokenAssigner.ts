@@ -6,9 +6,11 @@ import {
 class DelimiterFormatTokenAssigner implements IAssigner {
 	public readonly name: string;
 	public readonly type: string;
+	public readonly format?: string;
 
-	constructor(name: string, type: string) {
+	constructor(name: string, type: string, format?: string) {
 		this.name = name;
+		this.format = format;
 		this.type = type;
 	}
 

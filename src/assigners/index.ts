@@ -32,7 +32,24 @@ const twelveHourFormatTokenAssigner = new TwelveHourFormatTokenAssigner('TwelveH
 const twentyFourHourFormatTokenAssigner = new TwentyFourHourFormatTokenAssigner('TwentyFourHourFormatTokenAssigner', 'twentyFourHour');
 const yearFormatTokenAssigner = new YearFormatTokenAssigner('YearFormatTokenAssigner', 'year');
 
-const assigners = [
+const strftimeDayOfMonthFormatTokenAssigner = new DayOfMonthFormatTokenAssigner('DelimiterFormatTokenAssigner', 'dayOfMonth', 'strftime');
+const strftimeDayOfWeekFormatTokenAssigner = new DayOfWeekFormatTokenAssigner('DayOfWeekFormatTokenAssigner', 'dayOfWeek', 'strftime');
+const strftimeDayOfYearFormatTokenAssigner  = new DayOfYearFormatTokenAssigner('DayOfYearFormatTokenAssigner', 'dayOfYear', 'strftime');
+const strftimeDelimiterFormatTokenAssigner = new DelimiterFormatTokenAssigner('DelimiterFormatTokenAssigner', 'delimiter', 'strftime');
+const strftimeEscapeTextFormatTokenAssigner = new EscapeTextFormatTokenAssigner('EscapeTextFormatTokenAssigner', 'escapeText', 'strftime');
+const strftimeISODayOfWeekFormatTokenAssigner = new ISODayOfWeekFormatTokenAssigner('ISODayOfWeekFormatTokenAssigner', 'isoDayOfWeek', 'strftime');
+const strftimeISOWeekOfYearFormatTokenAssigner = new ISOWeekOfYearFormatTokenAssigner('ISOWeekOfYearFormatTokenAssigner', 'isoWeekOfYear', 'strftime');
+const strftimeMeridiemFormatTokenAssigner = new MeridiemFormatTokenAssigner('MeridiemFormatTokenAssigner', 'meridiem', 'strftime');
+const strftimeMillisecondFormatTokenAssigner = new MillisecondFormatTokenAssigner('MillisecondFormatTokenAssigner', 'millisecond', 'strftime');
+const strftimeMinuteFormatTokenAssigner = new MinuteFormatTokenAssigner('MinuteFormatTokenAssigner', 'minute', 'strftime');
+const strftimeMonthFormatTokenAssigner = new MonthFormatTokenAssigner('MonthFormatTokenAssigner', 'month', 'strftime');
+const strftimeSecondFormatTokenAssigner = new SecondFormatTokenAssigner('SecondFormatTokenAssigner', 'second', 'strftime');
+const strftimeTimezoneFormatTokenAssigner = new TimezoneFormatTokenAssigner('TimezoneFormatTokenAssigner', 'timezone', 'strftime');
+const strftimeTwelveHourFormatTokenAssigner = new TwelveHourFormatTokenAssigner('TwelveHourFormatTokenAssigner', 'twelveHour', 'strftime');
+const strftimeTwentyFourHourFormatTokenAssigner = new TwentyFourHourFormatTokenAssigner('TwentyFourHourFormatTokenAssigner', 'twentyFourHour', 'strftime');
+const strftimeYearFormatTokenAssigner = new YearFormatTokenAssigner('YearFormatTokenAssigner', 'year', 'strftime');
+
+export const defaultAssigners = [
 	yearFormatTokenAssigner,
 	monthFormatTokenAssigner,
 	dayOfMonthFormatTokenAssigner,
@@ -51,4 +68,21 @@ const assigners = [
 	meridiemFormatTokenAssigner,
 ];
 
-export default assigners;
+export const strftimeAssigners = [
+	strftimeDayOfMonthFormatTokenAssigner,
+	strftimeDayOfWeekFormatTokenAssigner,
+	strftimeDayOfYearFormatTokenAssigner,
+	strftimeDelimiterFormatTokenAssigner,
+	strftimeEscapeTextFormatTokenAssigner,
+	strftimeISODayOfWeekFormatTokenAssigner,
+	strftimeISOWeekOfYearFormatTokenAssigner,
+	strftimeMeridiemFormatTokenAssigner,
+	strftimeMillisecondFormatTokenAssigner,
+	strftimeMinuteFormatTokenAssigner,
+	strftimeMonthFormatTokenAssigner,
+	strftimeSecondFormatTokenAssigner,
+	strftimeTimezoneFormatTokenAssigner,
+	strftimeTwelveHourFormatTokenAssigner,
+	strftimeTwentyFourHourFormatTokenAssigner,
+	strftimeYearFormatTokenAssigner,
+];

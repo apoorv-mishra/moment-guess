@@ -6,20 +6,15 @@ import {
 class TimezoneFormatTokenAssigner implements IAssigner {
 	public readonly name: string;
 	public readonly type: string;
+	public readonly format?: string;
 
 	private _map: Map<RegExp, string>;
 
-	constructor(name: string, type: string) {
+	constructor(name: string, type: string, format?: string) {
 		this.name = name;
 		this.type = type;
+		this.format = format;
 		this._map = new Map();
-
-		this._map.set(/[+-]\d{2}(?::\d{2})?/, 'Z');
-		this._map.set(/[+-]\d{4}/, 'ZZ');
-
-		// Treat these as escaped text
-		this._map.set(/Z/, '[Z]');
-		this._map.set(/z/, '[z]');
 
 		const abbreviatedTimezoneRegex = new RegExp(
 			'UT|'
@@ -66,7 +61,26 @@ class TimezoneFormatTokenAssigner implements IAssigner {
 			+ 'ACT|AMST|AMT|ART|BOT|BRST|BRT|CLST|CLT|COT|ECT|FKST|FKT|FNT|GFT|GST|GYT|PET|PYST|PYT|SRT|UYST|UYT|VET|WARST'
 		);
 
-		this._map.set(abbreviatedTimezoneRegex, 'z');
+		if (!format || format === 'default') {
+			this._map.set(/[+-]\d{2}(?::\d{2})?/, 'Z');
+			this._map.set(/[+-]\d{4}/, 'ZZ');
+
+			// Treat these as escaped text
+			this._map.set(/Z/, '[Z]');
+			this._map.set(/z/, '[z]');
+
+
+			this._map.set(abbreviatedTimezoneRegex, 'z');
+		} else {
+			this._map.set(/[+-]\d{2}(?::\d{2})?/, '%:z');
+			this._map.set(/[+-]\d{4}/, '%z');
+
+			// Treat these as escaped text
+			this._map.set(/Z/, 'Z');
+			this._map.set(/z/, 'z');
+
+			this._map.set(abbreviatedTimezoneRegex, '%Z');
+		}
 	}
 
 	private _testTokenType(token: Token): boolean {

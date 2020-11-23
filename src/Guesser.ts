@@ -1,6 +1,6 @@
 import parsers from './parsers';
 import refiners from './refiners';
-import assigners from './assigners';
+import { strftimeAssigners, defaultAssigners } from './assigners';
 import Token from './parsers/Token';
 
 import {
@@ -34,7 +34,8 @@ export default class Guesser {
 		return refinedParsedResults;
 	}
 
-	static assign(tokens: Array<Token>): void {
+	static assign(tokens: Array<Token>, format?: string): void {
+		let assigners = (!format || format === 'default') ? defaultAssigners : strftimeAssigners;
 		assigners.forEach(assigner => {
 			tokens.forEach(token => {
 				assigner.assign(token);
@@ -45,6 +46,9 @@ export default class Guesser {
 	static getFormatString(tokens: Array<Token>): Format {
 		let formatString: Format = '';
 		tokens.forEach(token => {
+			if (token.format === 'NA') {
+				throw Error(`Couldn't find strftime modifier for "${token.value}"`);
+			}
 			formatString += token.format ? token.format : token.value;
 		});
 		return formatString;
