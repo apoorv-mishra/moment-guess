@@ -20,7 +20,7 @@ class TwelveHourFormatTokenAssigner implements IAssigner {
 			this._map.set(/^([1-9]|1[0-2])$/, 'h');
 			this._map.set(/^(0\d|1[0-2])$/, 'hh');
 		} else {
-			this._map.set(/^([1-9]|1[0-2])$/, '%l');
+			this._map.set(/^([1-9]|1[0-2])$/, '%-l');
 			this._map.set(/^(0\d|1[0-2])$/, '%I');
 		}
 	}

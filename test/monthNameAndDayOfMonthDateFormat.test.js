@@ -11,6 +11,16 @@ describe('Month followed by day of month type dates', () => {
 		expect(guessFormat('Jan 1, 10:00 am', 'strftime')).toBe('%b %-e, %I:%M %P');
 	});
 
+	test('# Mon D, h am|pm', () => {
+		expect(guessFormat('Jan 1, 1 am')).toBe('MMM D, h a');
+		expect(guessFormat('Jan 1, 1 am', 'strftime')).toBe('%b %-e, %-l %P');
+	});
+
+	test('# Mon D, ham|pm', () => {
+		expect(guessFormat('Jan 1, 1am')).toBe('MMM D, ha');
+		expect(guessFormat('Jan 1, 1am', 'strftime')).toBe('%b %-e, %-l%P');
+	});
+
 	test('# Mon D, HH:mm', () => {
 		expect(guessFormat('Jan 1, 10:00')).toBe('MMM D, HH:mm');
 		expect(guessFormat('Jan 1, 10:00', 'strftime')).toBe('%b %-e, %H:%M');

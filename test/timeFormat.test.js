@@ -6,6 +6,11 @@ describe('Time formats', () => {
 		expect(guessFormat('21:22', 'strftime')).toBe('%H:%M');
 	});
 
+	test('# hours(single digit) and mins, colon sep (24 hr format)', () => {
+		expect(guessFormat('1:22')).toBe('H:mm');
+		expect(guessFormat('1:22', 'strftime')).toBe('%-k:%M');
+	});
+
 	test('# hours and minutes with abbreviated timezone (24 hr format)', () => {
 		expect(guessFormat('21:22 EST')).toBe('HH:mm z');
 		expect(guessFormat('21:22 EST', 'strftime')).toBe('%H:%M %Z');
@@ -59,6 +64,26 @@ describe('Time formats', () => {
 	test('# hours, mins, secs dot sep (12 hr format, am|pm)', () => {
 		expect(guessFormat('10.00.59 am')).toBe('hh.mm.ss a');
 		expect(guessFormat('10.00.59 am', 'strftime')).toBe('%I.%M.%S %P');
+	});
+
+	test('# hours(double digit) (12 hr format, AM|PM)', () => {
+		expect(guessFormat('10 PM')).toBe('hh A');
+		expect(guessFormat('10 PM', 'strftime')).toBe('%I %p');
+	});
+
+	test('# hours(double digit) and meridiem without delimiter (12 hr format, AM|PM)', () => {
+		expect(guessFormat('10PM')).toBe('hhA');
+		expect(guessFormat('10PM', 'strftime')).toBe('%I%p');
+	});
+
+	test('# hours(single digit) (12 hr format, AM|PM)', () => {
+		expect(guessFormat('5 PM')).toBe('h A');
+		expect(guessFormat('5 PM', 'strftime')).toBe('%-l %p');
+	});
+
+	test('# hours(single digit) and meridiem without delimiter (12 hr format, AM|PM)', () => {
+		expect(guessFormat('5PM')).toBe('hA');
+		expect(guessFormat('5PM', 'strftime')).toBe('%-l%p');
 	});
 
 	test('# invalid date (12 hr format, am|pm)', () => {

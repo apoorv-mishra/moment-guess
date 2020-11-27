@@ -16,6 +16,16 @@ describe('Slash, dot or dash delimited date formats', () => {
 		expect(guessFormat('2020/01/01 10:00 AM IST', 'strftime')).toBe('%Y/%m/%d %I:%M %p %Z');
 	});
 
+	test('# YYYY/MM/DD h A z', () => {
+		expect(guessFormat('2020/01/01 1 AM IST')).toBe('YYYY/MM/DD h A z');
+		expect(guessFormat('2020/01/01 1 AM IST', 'strftime')).toBe('%Y/%m/%d %-l %p %Z');
+	});
+
+	test('# YYYY/MM/DD hA z', () => {
+		expect(guessFormat('2020/01/01 1AM IST')).toBe('YYYY/MM/DD hA z');
+		expect(guessFormat('2020/01/01 1AM IST', 'strftime')).toBe('%Y/%m/%d %-l%p %Z');
+	});
+
 	test('# YYYY.MM.DD', () => {
 		expect(guessFormat('2020.01.01')).toBe('YYYY.MM.DD');
 		expect(guessFormat('2020.01.01', 'strftime')).toBe('%Y.%m.%d');
