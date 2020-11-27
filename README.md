@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to moment-guess 👋<br> <img src="./logo.png" /></h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.2.0-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.2.1-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/apoorv-mishra/moment-guess#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
@@ -69,6 +69,8 @@ try {
 - *Mon, 06 Mar 2017 21:22:23 +0000*([RFC 2822](https://tools.ietf.org/html/rfc2822#section-3.3))
 
 - *31/12/2020, 1.1.2020, 31-12-20*(slash, dot or dash delimited dates, both US and UK styles)
+
+- *31-Dec-2020, 1-Jan-20*(dash delimited with month name)
 
 - *Fri, January 30th 2020, 10:00 AM*(dow, dd Mon yyyy[, hh:mm:ss am|pm|AM|PM] with both short and long names)
 
