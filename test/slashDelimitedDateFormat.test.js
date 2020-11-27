@@ -195,6 +195,26 @@ describe('Slash, dot or dash delimited date formats', () => {
 		expect(guessFormat('13-01-2020', 'strftime')).toBe('%d-%m-%Y');
 	});
 
+	test('# DD-MMM-YYYY', () => {
+		expect(guessFormat('13-Jan-2020')).toBe('DD-MMM-YYYY');
+		expect(guessFormat('13-Jan-2020', 'strftime')).toBe('%d-%b-%Y');
+	});
+
+	test('# DD-MMM-YYYY, hh:mm am|pm Z', () => {
+		expect(guessFormat('13-Jan-2020, 10:00 am IST')).toBe('DD-MMM-YYYY, hh:mm a z');
+		expect(guessFormat('13-Jan-2020, 10:00 am IST', 'strftime')).toBe('%d-%b-%Y, %I:%M %P %Z');
+	});
+
+	test('# DD-MMM-YY', () => {
+		expect(guessFormat('13-Jan-20')).toBe('DD-MMM-YY');
+		expect(guessFormat('13-Jan-20', 'strftime')).toBe('%d-%b-%y');
+	});
+
+	test('# DD-MMM-YY, ham|pm', () => {
+		expect(guessFormat('13-Jan-20, 1am')).toBe('DD-MMM-YY, ha');
+		expect(guessFormat('13-Jan-20, 1am', 'strftime')).toBe('%d-%b-%y, %-l%P');
+	});
+
 	test('# MM, DD out of range', () => {
 		expect(() => {
 			guessFormat('99/99/2020')

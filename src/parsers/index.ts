@@ -425,6 +425,45 @@ const uSStyleSlashDelimitedDateTimeFormatParser = new Parser(
 	)
 );
 
+const dashDelimitedWithMonthNameDateTimeFormatParser = new Parser(
+	'DashDelimitedWithMonthNameDateTimeFormatParser',
+	new RegExp('^'
+		+ '(?<dayOfMonth>0?[1-9]|[1-2]\\d|3[0-1])'
+		+ '(?<delim1>-)'
+		+ '(?<month>Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|June?'
+		+ '|'
+		+ 'July?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)'
+		+ '(?<delim2>-)?'
+		+ '(?<year>\\d{4}|\\d{2})?'
+		+ '(?:'
+			+ '(?:'
+				+ '(?<delim3>,)?'
+				+ '(?<delim4>\\s)'
+				+ '(?:(?<twentyFourHour>2[0-3]|0?\\d|1\\d)|(?<twelveHour>0?[1-9]|1[0-2]))'
+				+ '(?:'
+					+ '(?<delim5>[:.])'
+					+ '(?<minute>[0-5]\\d)'
+				+ ')?'
+				+ '(?:'
+					+ '(?<delim6>[:.])'
+					+ '(?<second>[0-5]\\d)'
+				+ ')?'
+				+ '(?:'
+					+ '(?<delim7>.)'
+					+ '(?<millisecond>\\d{3})'
+				+ ')?'
+				+ '(?<delim8>\\s)?'
+				+ '(?<meridiem>am|pm|AM|PM)?'
+				+ '(?:'
+					+ '(?<delim9>\\s)'
+					+ `(?<timezone>[+-]\\d{2}(?::?\\d{2})?|Z|${abbreviatedTimezones})`
+				+ ')?'
+			+ ')?'
+		+ ')?'
+		+ '$'
+	)
+);
+
 const parsers = [
 	iSO8601ExtendedDateTimeFormatParser,
 	iSO8601BasicDateTimeFormatParser,
@@ -436,6 +475,7 @@ const parsers = [
 	dayOfMonthAndMonthNameDateFormatParser,
 	twentyFourHourTimeFormatParser,
 	twelveHourTimeFormatParser,
+	dashDelimitedWithMonthNameDateTimeFormatParser,
 ];
 
 export default parsers;
