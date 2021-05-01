@@ -1,4 +1,4 @@
-const guessFormat = require('../dist/bundle.js');
+import guessFormat from '../src';
 
 describe('Slash, dot or dash delimited date formats', () => {
 	test('# YYYY/MM/DD', () => {
