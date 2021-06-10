@@ -1,4 +1,4 @@
-const guessFormat = require('../dist/bundle.js');
+import guessFormat from '../src';
 
 describe('Time formats', () => {
 	test('# hours and mins, colon sep (24 hr format)', () => {

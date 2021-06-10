@@ -1,4 +1,4 @@
-const guessFormat = require('../dist/bundle.js');
+import guessFormat from '../src';
 
 describe('Day of month followed by month name type dates', () => {
 	test('# D Mon', () => {

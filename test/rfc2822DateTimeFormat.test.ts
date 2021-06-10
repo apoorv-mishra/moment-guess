@@ -1,4 +1,4 @@
-const guessFormat = require('../dist/bundle.js');
+import guessFormat from '../src';
 
 describe('RFC 2822 date time formats', () => {
 	test('# complete date and time', () => {

@@ -1,4 +1,4 @@
-const guessFormat = require('../dist/bundle.js');
+import guessFormat from '../src';
 
 describe('ISO 8601 extended date time formats', () => {
 	test('# calendar date part', () => {
