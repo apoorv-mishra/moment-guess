@@ -12,6 +12,9 @@
   },
   "main": "dist/bundle.js",
   "module": "dist/bundle.esm.js",
+  "engines": {
+    "node": ">=14.17.0"
+  },
   "bin": {
     "moment-guess": "bin/bundle.cmd.js"
   },
